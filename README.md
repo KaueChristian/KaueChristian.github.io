@@ -3,7 +3,7 @@
 Portfólio pessoal desenvolvido do zero em HTML, CSS e JavaScript puro, sem frameworks
 nem etapa de build. Apresenta minha trajetória, stack e projetos.
 
-🔗 **[Ver online](#)** _(atualizar após o deploy)_
+🔗 **[kauechristian.github.io](https://kauechristian.github.io)**
 
 ## Destaques técnicos
 
