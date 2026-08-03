@@ -1,0 +1,29 @@
+# Sistema operacional
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.DS_Store
+
+# Editores / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ferramentas locais
+.claude/
+
+# Variáveis de ambiente e segredos
+.env
+.env.*
+*.pem
+*.key
+
+# Dependências e build (caso o projeto cresça)
+node_modules/
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*

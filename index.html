@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaue Firmo — Desenvolvedor Full Stack</title>
+<meta name="description" content="Portfólio de Kaue Firmo, desenvolvedor full stack especializado em Python, Vue.js e Delphi. Confira meus projetos e entre em contato.">
+<script>
+  (function () {
+    var stored = localStorage.getItem('theme');
+    var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=9">
+</head>
+<body>
+
+<header class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="#top" class="navbar__logo">Kaue<span>.</span></a>
+    <nav class="navbar__nav" id="navMenu">
+      <a href="#sobre">Sobre</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#experiencia">Trajetória</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+      <a href="#contato" class="btn btn--ghost navbar__cta navbar__cta--mobile">Vamos conversar</a>
+    </nav>
+    <a href="#contato" class="btn btn--ghost navbar__cta navbar__cta--desktop">Vamos conversar</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema" aria-pressed="false">
+      <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M12 2.5v2.6M12 18.9v2.6M4.2 4.2l1.85 1.85M17.95 17.95l1.85 1.85M2.5 12h2.6M18.9 12h2.6M4.2 19.8l1.85-1.85M17.95 6.05l1.85-1.85" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M20.5 14.8A8.6 8.6 0 1 1 9.2 3.5a7 7 0 0 0 11.3 11.3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" fill="currentColor" fill-opacity="0.12"/>
+      </svg>
+    </button>
+    <button class="navbar__toggle" id="navToggle" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__glow hero__glow--1"></div>
+      <div class="hero__glow hero__glow--2"></div>
+    </div>
+
+    <div class="hero__inner">
+      <div class="hero__text">
+        <p class="eyebrow">Olá, tudo bem?</p>
+        <h1 class="hero__title">Bem-vindo<span class="dot">.</span></h1>
+        <p class="hero__subtitle">
+          Meu nome é <strong>Kaue Firmo</strong>, desenvolvedor full stack com foco
+          em <strong>Python</strong>, <strong>Vue.js</strong>, <strong>TypeScript</strong>
+          e <strong>Delphi</strong>. Construo sistemas escaláveis, organizados e
+          eficientes — sem abrir mão de um visual bem cuidado.
+        </p>
+        <div class="hero__actions">
+          <a href="#projetos" class="btn btn--primary">Ver projetos</a>
+          <a href="#contato" class="btn btn--outline">Entrar em contato</a>
+        </div>
+      </div>
+
+      <div class="hero__art" aria-hidden="true">
+        <svg viewBox="0 0 520 460" fill="none" xmlns="http://www.w3.org/2000/svg" class="illustration">
+          <ellipse cx="260" cy="410" rx="200" ry="24" fill="url(#shadowGrad)"/>
+          <g class="float-slow">
+            <rect x="120" y="120" width="280" height="180" rx="14" fill="#241a44" stroke="#3d2e73" stroke-width="2"/>
+            <rect x="120" y="120" width="280" height="180" rx="14" fill="url(#screenGrad)" opacity="0.5"/>
+            <rect x="140" y="140" width="240" height="140" rx="6" fill="#150e2b"/>
+            <g stroke-linecap="round" stroke-width="5">
+              <line x1="156" y1="158" x2="230" y2="158" stroke="#5eead4"/>
+              <line x1="156" y1="174" x2="260" y2="174" stroke="#7c9cff"/>
+              <line x1="156" y1="190" x2="200" y2="190" stroke="#f472b6"/>
+              <line x1="170" y1="206" x2="250" y2="206" stroke="#5eead4"/>
+              <line x1="156" y1="222" x2="290" y2="222" stroke="#7c9cff"/>
+              <line x1="170" y1="238" x2="220" y2="238" stroke="#f472b6"/>
+              <line x1="156" y1="254" x2="270" y2="254" stroke="#5eead4"/>
+            </g>
+          </g>
+          <g class="float-fast">
+            <rect x="90" y="300" width="340" height="26" rx="13" fill="#2c2154"/>
+            <rect x="70" y="300" width="60" height="26" rx="13" fill="#1c1438"/>
+          </g>
+          <g class="float-mid">
+            <rect x="330" y="70" width="70" height="130" rx="16" fill="#241a44" stroke="#3d2e73" stroke-width="2"/>
+            <rect x="342" y="90" width="46" height="90" rx="4" fill="#150e2b"/>
+            <circle cx="365" cy="188" r="5" fill="#3d2e73"/>
+          </g>
+          <g class="float-mid" style="animation-delay:-2s">
+            <circle cx="130" cy="90" r="26" fill="#2c2154"/>
+            <path d="M118 90c0-8 6-14 14-14" stroke="#5eead4" stroke-width="4" stroke-linecap="round"/>
+          </g>
+          <defs>
+            <radialGradient id="shadowGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(260 410) scale(200 24)">
+              <stop stop-color="#000" stop-opacity="0.35"/>
+              <stop offset="1" stop-color="#000" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="screenGrad" x1="120" y1="120" x2="400" y2="300" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#7c5cff"/>
+              <stop offset="1" stop-color="#33d6c0" stop-opacity="0.4"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+
+    <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,64 C480,160 960,-32 1440,64 L1440,120 L0,120 Z" fill="#ffffff"/>
+    </svg>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="about" id="sobre">
+    <div class="section__inner about__inner">
+      <div class="about__text reveal">
+        <p class="eyebrow eyebrow--dark">Sobre mim</p>
+        <h2 class="section__title">Quem sou eu</h2>
+        <p class="section__paragraph">
+          Sou desenvolvedor <strong>full stack</strong> e estudante de
+          <strong>Engenharia de Software</strong>. A parte que mais gosto na programação
+          é poder desenvolver e implementar ideias em sistemas — algo que se prova
+          bastante desafiador em vários casos, e é justamente aí que está a graça.
+        </p>
+        <p class="section__paragraph">
+          Trabalho em todas as camadas de um sistema, do banco de dados e da lógica de
+          back-end até a interface que o usuário final vê, com domínio de
+          <strong>Python</strong>, <strong>Golang</strong>, <strong>Delphi</strong>,
+          <strong>Vue.js</strong>, Java e SQL. Estou sempre buscando entender novas
+          tecnologias para entregar sistemas <strong>escaláveis</strong>,
+          <strong>organizados</strong> e <strong>eficientes</strong>.
+        </p>
+
+        <div class="skills-marquee" role="list" aria-label="Tecnologias que utilizo">
+          <div class="skills-track" id="skillsTrack">
+            <!-- gerado via JS a partir de #skill-icons -->
+          </div>
+        </div>
+      </div>
+
+      <div class="about__stats reveal" id="statsTimeline">
+        <span class="stats-line" aria-hidden="true"><span class="stats-line__fill"></span></span>
+
+        <div class="stat-card">
+          <span class="stat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3 3 8l9 5 9-5-9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M3 13l9 5 9-5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M3 18l9 5 9-5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="stat-card__body">
+            <span class="stat-card__number">Full Stack</span>
+            <span class="stat-card__label">Do banco de dados à interface</span>
+          </span>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15 7h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="stat-card__body">
+            <span class="stat-card__number">Escalável</span>
+            <span class="stat-card__label">Sistemas prontos para crescer</span>
+          </span>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="stat-card__body">
+            <span class="stat-card__number">Eficiente</span>
+            <span class="stat-card__label">Código organizado e performático</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HABILIDADES -->
+  <section class="expertise" id="habilidades">
+    <div class="section__inner">
+      <div class="section__head reveal">
+        <p class="eyebrow eyebrow--dark">Expertise</p>
+        <h2 class="section__title">Minhas Habilidades</h2>
+        <p class="section__paragraph">Onde entrego mais valor, em números.</p>
+      </div>
+
+      <div class="bars reveal">
+        <div class="bar">
+          <div class="bar__head">
+            <span class="bar__label">Back-end</span>
+            <span class="bar__value" data-target="90">0%</span>
+          </div>
+          <div class="bar__track">
+            <div class="bar__fill" data-percent="90"></div>
+          </div>
+        </div>
+
+        <div class="bar">
+          <div class="bar__head">
+            <span class="bar__label">Manutenção de Sistemas</span>
+            <span class="bar__value" data-target="85">0%</span>
+          </div>
+          <div class="bar__track">
+            <div class="bar__fill" data-percent="85"></div>
+          </div>
+        </div>
+
+        <div class="bar">
+          <div class="bar__head">
+            <span class="bar__label">Front-end</span>
+            <span class="bar__value" data-target="80">0%</span>
+          </div>
+          <div class="bar__track">
+            <div class="bar__fill" data-percent="80"></div>
+          </div>
+        </div>
+
+        <div class="bar">
+          <div class="bar__head">
+            <span class="bar__label">Automação &amp; Web Scraping</span>
+            <span class="bar__value" data-target="85">0%</span>
+          </div>
+          <div class="bar__track">
+            <div class="bar__fill" data-percent="85"></div>
+          </div>
+        </div>
+
+        <div class="bar">
+          <div class="bar__head">
+            <span class="bar__label">Arquiteturas Legado</span>
+            <span class="bar__value" data-target="70">0%</span>
+          </div>
+          <div class="bar__track">
+            <div class="bar__fill" data-percent="70"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIÊNCIA & FORMAÇÃO -->
+  <section class="experience" id="experiencia">
+    <div class="section__inner">
+      <div class="section__head reveal">
+        <p class="eyebrow eyebrow--dark">Trajetória</p>
+        <h2 class="section__title">Experiência &amp; Formação</h2>
+        <p class="section__paragraph">Onde venho aplicando e construindo o que sei.</p>
+      </div>
+
+      <div class="experience__grid">
+        <div class="timeline reveal">
+          <h3 class="experience__subtitle">Experiência profissional</h3>
+
+          <div class="timeline__item">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <h4 class="timeline__role">Assistente de T.I</h4>
+            <span class="timeline__company">GoConsignado</span>
+            <p class="timeline__desc">
+              Manutenção das máquinas da empresa e auxílio direto aos usuários nas
+              funcionalidades do sistema interno.
+            </p>
+          </div>
+
+          <div class="timeline__item">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <h4 class="timeline__role">Manutenção de Sistemas</h4>
+            <span class="timeline__company">Tron Sistemas</span>
+            <p class="timeline__desc">
+              Manutenção de sistemas legado e tratamento de erros, atuando na
+              estabilidade e na continuidade de aplicações já em produção.
+            </p>
+          </div>
+        </div>
+
+        <div class="experience__side reveal">
+          <h3 class="experience__subtitle">Formação</h3>
+
+          <div class="edu-card">
+            <span class="edu-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="m12 4 9 4.5-9 4.5-9-4.5L12 4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                <path d="M6.5 10.8v4.9c0 1.5 2.5 2.8 5.5 2.8s5.5-1.3 5.5-2.8v-4.9M21 8.5v5.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="edu-card__body">
+              <h4>Engenharia de Software</h4>
+              <span class="edu-card__place">Unigoiás — Centro Universitário de Goiás</span>
+              <span class="edu-card__meta">Conclusão em 2026</span>
+            </div>
+          </div>
+
+          <div class="edu-card">
+            <span class="edu-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 3.5h14v17l-7-3.4-7 3.4v-17Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="edu-card__body">
+              <h4>Ensino Médio Completo</h4>
+              <span class="edu-card__place">Colégio MetaTech</span>
+            </div>
+          </div>
+
+          <h3 class="experience__subtitle experience__subtitle--spaced">Idiomas</h3>
+          <div class="lang-list">
+            <div class="lang-item">
+              <span class="lang-item__name">Português</span>
+              <span class="lang-item__level">Nativo</span>
+            </div>
+            <div class="lang-item">
+              <span class="lang-item__name">Inglês</span>
+              <span class="lang-item__level">Avançado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section class="projects" id="projetos">
+    <div class="projects__pin" id="projectsPin">
+      <div class="projects__sticky">
+        <div class="section__inner">
+          <div class="section__head reveal">
+            <p class="eyebrow eyebrow--dark">Portfólio</p>
+            <h2 class="section__title">Meus Projetos</h2>
+            <p class="section__paragraph">Uma coleção de projetos em que já trabalhei. Role para continuar.</p>
+          </div>
+        </div>
+
+        <div class="projects__track" id="projectsTrack">
+
+          <article class="project-card">
+            <div class="project-card__thumb project-card__thumb--1" aria-hidden="true">
+              <svg class="project-card__glyph" viewBox="0 0 24 24" fill="none">
+                <path d="M8 6 3 12l5 6M16 6l5 6-5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13.5 4.5 10.5 19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+              <span class="project-card__num">01</span>
+            </div>
+            <div class="project-card__body">
+              <h3>API REST em Golang</h3>
+              <p>API completa com persistência em banco de dados, construída em Go com foco em performance e organização clara das camadas da aplicação.</p>
+              <div class="project-card__tags">
+                <span>Golang</span><span>SQL</span><span>API REST</span>
+              </div>
+              <a href="https://github.com/KaueChristian" target="_blank" rel="noopener noreferrer" class="project-card__link">Ver projeto →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__thumb project-card__thumb--2" aria-hidden="true">
+              <svg class="project-card__glyph" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="4.5" width="18" height="16" rx="2.5" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M3 9.5h18M8 2.8v3.4M16 2.8v3.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M8 13.5h3M8 17h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+              <span class="project-card__num">02</span>
+            </div>
+            <div class="project-card__body">
+              <h3>Agenda com Web Scraping</h3>
+              <p>Sistema de agenda alimentado por um serviço de web scraping, que coleta e organiza dados automaticamente através de requisições HTTPS.</p>
+              <div class="project-card__tags">
+                <span>Python</span><span>Web Scraping</span><span>Requests</span>
+              </div>
+              <a href="https://github.com/KaueChristian" target="_blank" rel="noopener noreferrer" class="project-card__link">Ver projeto →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__thumb project-card__thumb--3" aria-hidden="true">
+              <svg class="project-card__glyph" viewBox="0 0 24 24" fill="none">
+                <path d="m12 3 8 4.2v9.6L12 21l-8-4.2V7.2L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="m4 7.2 8 4.3 8-4.3M12 11.5V21" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              </svg>
+              <span class="project-card__num">03</span>
+            </div>
+            <div class="project-card__body">
+              <h3>Gerenciador de Estoque</h3>
+              <p>Software desktop para controle de estoque, com back-end em Python e SQLite e interface gráfica construída em Tkinter.</p>
+              <div class="project-card__tags">
+                <span>Python</span><span>SQLite</span><span>Tkinter</span>
+              </div>
+              <a href="https://github.com/KaueChristian" target="_blank" rel="noopener noreferrer" class="project-card__link">Ver projeto →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__thumb project-card__thumb--4" aria-hidden="true">
+              <svg class="project-card__glyph" viewBox="0 0 24 24" fill="none">
+                <rect x="4" y="8" width="16" height="12" rx="3" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M12 3v5M2.5 13.5h1.6M19.9 13.5h1.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <circle cx="12" cy="2.6" r="1.4" fill="currentColor"/>
+                <circle cx="9.3" cy="13.4" r="1.3" fill="currentColor"/>
+                <circle cx="14.7" cy="13.4" r="1.3" fill="currentColor"/>
+                <path d="M9.5 16.8h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+              <span class="project-card__num">04</span>
+            </div>
+            <div class="project-card__body">
+              <h3>Bot de Rede Social</h3>
+              <p>Automação de tarefas repetitivas em redes sociais usando Selenium, incluindo o envio programado de mensagens.</p>
+              <div class="project-card__tags">
+                <span>Python</span><span>Selenium</span><span>Automação</span>
+              </div>
+              <a href="https://github.com/KaueChristian" target="_blank" rel="noopener noreferrer" class="project-card__link">Ver projeto →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__thumb project-card__thumb--5" aria-hidden="true">
+              <svg class="project-card__glyph" viewBox="0 0 24 24" fill="none">
+                <path d="M10 13.5a4 4 0 0 0 5.7.4l3-3a4 4 0 0 0-5.7-5.7l-1.5 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 10.5a4 4 0 0 0-5.7-.4l-3 3a4 4 0 0 0 5.7 5.7l1.5-1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="project-card__num">05</span>
+            </div>
+            <div class="project-card__body">
+              <h3>Encurtador de URL</h3>
+              <p>Encurtador de links com API em Flask e interface em Vue.js, incluindo tratamento e validação das URLs recebidas.</p>
+              <div class="project-card__tags">
+                <span>Flask</span><span>Vue.js</span><span>Python</span>
+              </div>
+              <a href="https://github.com/KaueChristian" target="_blank" rel="noopener noreferrer" class="project-card__link">Ver projeto →</a>
+            </div>
+          </article>
+
+          <article class="project-card project-card--cta">
+            <div class="project-card__cta-body">
+              <span class="project-card__cta-eyebrow">E tem mais</span>
+              <h3>Confira meu GitHub</h3>
+              <p>Outros projetos, testes e experimentos ficam por lá.</p>
+              <a href="https://github.com/KaueChristian" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Ver GitHub</a>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="projects__progress" aria-hidden="true">
+          <span class="projects__progress-fill" id="projectsProgressFill"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contact" id="contato">
+    <svg class="wave wave--top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,64 C480,-32 960,160 1440,64 L1440,0 L0,0 Z" fill="#ffffff"/>
+    </svg>
+
+    <div class="section__inner contact__inner reveal">
+      <p class="eyebrow">Contato</p>
+      <h2 class="hero__title contact__title">Vamos conversar<span class="dot">.</span></h2>
+      <p class="hero__subtitle contact__subtitle">
+        Tem um projeto em mente ou quer trocar uma ideia? Me manda uma mensagem,
+        vou adorar conversar.
+      </p>
+
+      <div class="contact__links">
+        <a href="mailto:kauefirmo410@gmail.com" class="contact__link">
+          <span class="contact__link-label">Email</span>
+          <span class="contact__link-value">kauefirmo410@gmail.com</span>
+        </a>
+        <a href="https://github.com/KaueChristian" target="_blank" rel="noopener noreferrer" class="contact__link">
+          <span class="contact__link-label">GitHub</span>
+          <span class="contact__link-value">github.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/kau%C3%AA-firmo-593b9b322/" target="_blank" rel="noopener noreferrer" class="contact__link">
+          <span class="contact__link-label">LinkedIn</span>
+          <span class="contact__link-value">Kauê Firmo</span>
+        </a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Kaue Firmo. Todos os direitos reservados.</p>
+    </footer>
+  </section>
+
+</main>
+
+<button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">↑</button>
+
+<script src="js/script.js?v=6"></script>
+</body>
+</html>
