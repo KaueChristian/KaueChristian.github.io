@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" role="img" aria-label="URLCraft — encurtador de links">
+  <rect width="480" height="280" fill="#0b0b0c"/>
+
+  <g transform="translate(178,26) rotate(-4)">
+    <rect x="0" y="0" width="150" height="22" fill="#f3c318"/>
+    <text x="75" y="15" text-anchor="middle" font-family="Courier New, monospace" font-weight="700" font-size="10" fill="#0b0b0c" letter-spacing="0.5">★ FERRAMENTA GRATUITA</text>
+  </g>
+
+  <text x="240" y="98" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="46" fill="#f0327a" stroke="#ffffff" stroke-width="1.5" letter-spacing="1">URLCRAFT</text>
+
+  <text x="240" y="126" text-anchor="middle" font-family="Courier New, monospace" font-size="11" fill="#c9c9cf">&gt; encurte // personalize // acompanhe seus links</text>
+
+  <g font-family="Arial, sans-serif" font-weight="800">
+    <rect x="118" y="148" width="72" height="52" fill="#3f6bff"/>
+    <text x="154" y="176" text-anchor="middle" font-size="20" fill="#0b0b0c">0</text>
+    <text x="154" y="192" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0b0b0c">LINKS CRIADOS</text>
+
+    <rect x="204" y="148" width="72" height="52" fill="#20c997"/>
+    <text x="240" y="176" text-anchor="middle" font-size="20" fill="#0b0b0c">0</text>
+    <text x="240" y="192" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0b0b0c">CLIQUES TOTAIS</text>
+
+    <rect x="290" y="148" width="72" height="52" fill="#f0327a"/>
+    <text x="326" y="176" text-anchor="middle" font-size="18" fill="#0b0b0c">R$0</text>
+    <text x="326" y="192" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0b0b0c">PRA SEMPRE</text>
+  </g>
+
+  <g>
+    <clipPath id="stripeClip"><rect x="0" y="248" width="480" height="14"/></clipPath>
+    <g clip-path="url(#stripeClip)">
+      <rect x="0" y="248" width="480" height="14" fill="#f0327a"/>
+      <g fill="#f3c318">
+        <polygon points="0,262 20,248 34,248 14,262"/>
+        <polygon points="40,262 60,248 74,248 54,262"/>
+        <polygon points="80,262 100,248 114,248 94,262"/>
+        <polygon points="120,262 140,248 154,248 134,262"/>
+        <polygon points="160,262 180,248 194,248 174,262"/>
+        <polygon points="200,262 220,248 234,248 214,262"/>
+        <polygon points="240,262 260,248 274,248 254,262"/>
+        <polygon points="280,262 300,248 314,248 294,262"/>
+        <polygon points="320,262 340,248 354,248 334,262"/>
+        <polygon points="360,262 380,248 394,248 374,262"/>
+        <polygon points="400,262 420,248 434,248 414,262"/>
+        <polygon points="440,262 460,248 474,248 454,262"/>
+      </g>
+      <g fill="#3f6bff">
+        <polygon points="10,262 30,248 44,248 24,262"/>
+        <polygon points="50,262 70,248 84,248 64,262"/>
+        <polygon points="90,262 110,248 124,248 104,262"/>
+        <polygon points="130,262 150,248 164,248 144,262"/>
+        <polygon points="170,262 190,248 204,248 184,262"/>
+        <polygon points="210,262 230,248 244,248 224,262"/>
+        <polygon points="250,262 270,248 284,248 264,262"/>
+        <polygon points="290,262 310,248 324,248 304,262"/>
+        <polygon points="330,262 350,248 364,248 344,262"/>
+        <polygon points="370,262 390,248 404,248 384,262"/>
+        <polygon points="410,262 430,248 444,248 424,262"/>
+        <polygon points="450,262 470,248 484,248 464,262"/>
+      </g>
+    </g>
+  </g>
+</svg>
