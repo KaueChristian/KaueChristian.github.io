@@ -1,21 +1,24 @@
 # Portfólio — Kauê Christian
 
-Portfólio pessoal desenvolvido do zero em HTML, CSS e JavaScript puro, sem frameworks
-nem etapa de build. Apresenta minha trajetória, stack e projetos.
+Portfólio pessoal em HTML, CSS e Vue 3, sem etapa de build. Apresenta minha
+trajetória, stack e projetos.
 
 🔗 **[kauechristian.github.io](https://kauechristian.github.io)**
 
 ## Destaques técnicos
 
+- **Vue 3 sem bundler**, usando o build global via CDN e template no próprio HTML:
+  as listas (experiência, projetos e habilidades) são renderizadas a partir de
+  `js/data.js`, então editar conteúdo não exige mexer em marcação
 - **Tema claro/escuro** com persistência em `localStorage`, respeitando a preferência
   do sistema (`prefers-color-scheme`) e sem flash de tema errado no carregamento
-- **Scroll horizontal com pin** na seção de projetos: a seção trava e o scroll vertical
-  é convertido em movimento horizontal, implementado em JavaScript puro (sem GSAP)
-- **Carrossel infinito** de tecnologias, com destaque do item sob o cursor
-- **Animações on-scroll** via `IntersectionObserver`: barras de habilidade e timeline
-  animadas ao entrar na viewport
-- **Responsivo**, com o efeito de pin desativado no mobile em favor de um carrossel
-  por toque com `scroll-snap`
+- **Navbar em pílula flutuante** com *scroll spy*: o link da seção visível é destacado
+  automaticamente via `IntersectionObserver`
+- **Cores de marca adaptativas**: cada tecnologia carrega sua cor original e o CSS
+  ajusta a mistura com `color-mix()` por tema, mantendo contraste AA nos dois modos
+- **Animações on-scroll** via `IntersectionObserver`, com *reveal* progressivo das
+  seções e da timeline
+- **Responsivo**, do desktop ao mobile, com menu em painel suspenso
 - **Acessibilidade**: respeita `prefers-reduced-motion`, desativando animações
   para quem prefere menos movimento
 
@@ -24,8 +27,8 @@ nem etapa de build. Apresenta minha trajetória, stack e projetos.
 | Camada | Tecnologia |
 |---|---|
 | Marcação | HTML5 semântico |
-| Estilo | CSS3 (Custom Properties, Grid, Flexbox, `position: sticky`) |
-| Comportamento | JavaScript (ES6+, sem dependências) |
+| Estilo | CSS3 (Custom Properties, Grid, Flexbox, `color-mix()`) |
+| Comportamento | Vue 3 (build global, sem bundler) |
 | Tipografia | Outfit (Google Fonts) |
 | Ícones | SVG inline |
 
@@ -39,20 +42,25 @@ python -m http.server 5501
 
 Depois acesse `http://localhost:5501`.
 
-> Abrir o `index.html` direto pelo navegador (`file://`) também funciona, mas usar um
-> servidor local reproduz melhor o comportamento em produção.
+> O Vue é carregado via CDN, então é preciso estar online no primeiro carregamento.
+> Servir por HTTP (em vez de abrir o `index.html` via `file://`) reproduz melhor o
+> comportamento em produção.
 
 ## Estrutura
 
 ```
 portfolio/
-├── index.html      # Página única, dividida em seções
+├── index.html      # Página única — marcação e template do Vue
 ├── css/
 │   └── style.css   # Estilos e temas via CSS Custom Properties
 ├── js/
-│   └── script.js   # Tema, carrossel, scroll horizontal e animações
+│   ├── data.js     # Conteúdo: experiência, projetos, habilidades e ícones
+│   └── app.js      # App Vue: tema, menu, scroll spy e animações
 └── assets/         # Imagens e mídias
 ```
+
+Para atualizar o conteúdo do site (adicionar um projeto, uma tecnologia ou um novo
+cargo), basta editar `js/data.js`.
 
 ## Contato
 
