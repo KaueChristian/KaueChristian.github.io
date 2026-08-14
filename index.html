@@ -155,11 +155,15 @@
         <div class="about__text reveal">
           <p class="eyebrow eyebrow--dark">Sobre mim</p>
           <h2 class="section__title">Quem sou eu</h2>
+          <p class="about__lead">
+            Desenvolvedor full stack em Goiânia, construindo sistemas que precisam
+            funcionar todos os dias — não só na demonstração.
+          </p>
           <p class="section__paragraph">
-            Sou desenvolvedor <strong>full stack</strong> e estudante de
-            <strong>Engenharia de Software</strong>. A parte que mais gosto na programação
-            é poder desenvolver e implementar ideias em sistemas — algo que se prova
-            bastante desafiador em vários casos, e é justamente aí que está a graça.
+            Sou estudante de <strong>Engenharia de Software</strong> e a parte que mais
+            gosto na programação é poder desenvolver e implementar ideias em sistemas —
+            algo que se prova bastante desafiador em vários casos, e é justamente aí que
+            está a graça.
           </p>
           <p class="section__paragraph">
             Trabalho em todas as camadas de um sistema, do banco de dados e da lógica de
@@ -169,6 +173,13 @@
             tecnologias para entregar sistemas <strong>escaláveis</strong>,
             <strong>organizados</strong> e <strong>eficientes</strong>.
           </p>
+
+          <ul class="facts">
+            <li class="facts__item"><span class="facts__key">Baseado em</span><span class="facts__value">Goiânia — GO, Brasil</span></li>
+            <li class="facts__item"><span class="facts__key">Experiência</span><span class="facts__value">3+ anos · atualmente na Tron Sistemas</span></li>
+            <li class="facts__item"><span class="facts__key">Idiomas</span><span class="facts__value">Português (nativo) · Inglês (avançado)</span></li>
+            <li class="facts__item"><span class="facts__key">Disponível para</span><span class="facts__value">Projetos e oportunidades full stack</span></li>
+          </ul>
         </div>
 
         <div class="about__stats reveal" ref="statsTimeline">
@@ -211,6 +222,32 @@
               <span class="stat-card__number">Eficiente</span>
               <span class="stat-card__label">Código organizado e performático</span>
             </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- O que eu faço -->
+      <div class="section__inner about__block reveal">
+        <h3 class="about__block-title">O que eu faço</h3>
+        <div class="services" v-cloak>
+          <article class="service" v-for="service in services" :key="service.title">
+            <span class="service__icon" v-html="service.icon"></span>
+            <h4 class="service__title">{{ service.title }}</h4>
+            <p class="service__desc">{{ service.desc }}</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- Momento atual -->
+      <div class="section__inner about__block reveal">
+        <h3 class="about__block-title">
+          <span class="about__pulse" aria-hidden="true"></span>
+          Atualmente
+        </h3>
+        <div class="now" v-cloak>
+          <div class="now__item" v-for="item in now" :key="item.label">
+            <span class="now__label">{{ item.label }}</span>
+            <span class="now__value">{{ item.value }}</span>
           </div>
         </div>
       </div>
@@ -260,24 +297,75 @@
         <div class="section__head reveal">
           <p class="eyebrow eyebrow--dark">Portfólio</p>
           <h2 class="section__title">Meus Projetos</h2>
-          <p class="section__paragraph">Uma coleção de projetos em que já trabalhei.</p>
+          <p class="section__paragraph">Uma coleção de projetos em que já trabalhei. Os que ainda estão em desenvolvimento aparecem bloqueados.</p>
+        </div>
+
+        <div class="projects__filters reveal" role="group" aria-label="Filtrar projetos" v-cloak>
+          <button
+            type="button"
+            class="filter"
+            :class="{ 'is-active': projectFilter === 'todos' }"
+            :aria-pressed="String(projectFilter === 'todos')"
+            @click="projectFilter = 'todos'"
+          >Todos <span class="filter__count">{{ projects.length }}</span></button>
+          <button
+            type="button"
+            class="filter"
+            :class="{ 'is-active': projectFilter === 'concluidos' }"
+            :aria-pressed="String(projectFilter === 'concluidos')"
+            @click="projectFilter = 'concluidos'"
+          >Concluídos <span class="filter__count">{{ doneProjects.length }}</span></button>
         </div>
 
         <div class="projects__grid" v-cloak>
-          <article class="project reveal" v-for="project in projects" :key="project.title">
-            <div class="project__thumb" :class="project.thumbClass" aria-hidden="true">
+          <article
+            class="project reveal"
+            :class="project.locked ? 'project--locked' : ''"
+            v-for="project in visibleProjects"
+            :key="project.title"
+            @click="project.locked && denyAccess(project)"
+          >
+            <div class="project__thumb" :class="[project.thumbClass, { 'is-denied': denied === project.title }]" aria-hidden="true">
               <span class="project__glyph" v-html="project.glyph"></span>
               <span class="project__num">{{ project.num }}</span>
+
+              <div class="project__lock" v-if="project.locked">
+                <span class="project__lock-badge">
+                  <span class="project__lock-icon" v-html="lockIcon"></span>
+                  <span>Em desenvolvimento</span>
+                </span>
+              </div>
             </div>
+
             <div class="project__body">
               <h3 class="project__title">{{ project.title }}</h3>
               <p class="project__desc">{{ project.desc }}</p>
               <div class="project__tags">
                 <span v-for="tag in project.tags" :key="tag">{{ tag }}</span>
               </div>
-              <a :href="project.url" target="_blank" rel="noopener noreferrer" class="project__link">
-                {{ project.linkLabel }} →
-              </a>
+
+              <a
+                v-if="!project.locked"
+                :href="project.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project__link"
+              >{{ project.linkLabel }} →</a>
+
+              <button
+                v-else
+                type="button"
+                class="project__link project__link--locked"
+                :aria-disabled="true"
+                @click.stop="denyAccess(project)"
+              >
+                <span class="project__lock-icon" v-html="lockIcon"></span>
+                Indisponível
+              </button>
+
+              <p class="project__denied" v-if="denied === project.title" role="status">
+                Esse projeto ainda está em desenvolvimento — publico assim que ficar pronto.
+              </p>
             </div>
           </article>
 
