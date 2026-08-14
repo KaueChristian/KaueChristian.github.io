@@ -134,7 +134,26 @@
       <path d="M4.4 12c0 1.7 3.4 3 7.6 3s7.6-1.3 7.6-3"/></svg>`,
     catTools: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true">
       <path d="M14.8 6.2a4 4 0 0 1 5.4 4.9l-9.5 9.5a2.3 2.3 0 0 1-3.3-3.3l9.5-9.5a4 4 0 0 1-2.1-1.6Z"/>
-      <path d="M9.2 3.4 6 4.4 5 7.6l2.6 2.6 3.2-1 1-3.2L9.2 3.4Z"/></svg>`
+      <path d="M9.2 3.4 6 4.4 5 7.6l2.6 2.6 3.2-1 1-3.2L9.2 3.4Z"/></svg>`,
+
+    // Ícones dos cards de "O que eu faço"
+    svcStack: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+      <path d="M12 3 3 7.6l9 4.6 9-4.6L12 3Z"/><path d="m3 12.4 9 4.6 9-4.6"/><path d="m3 17.2 9 4.6 9-4.6"/></svg>`,
+    svcMaintain: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+      <path d="M20.5 12a8.5 8.5 0 0 1-14 6.5"/><path d="M3.5 12a8.5 8.5 0 0 1 14-6.5"/>
+      <path d="M17.5 2.4v3.4h-3.4M6.5 21.6v-3.4h3.4"/><circle cx="12" cy="12" r="2.4"/></svg>`,
+    svcApi: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+      <path d="M8.5 4.5H7A2.5 2.5 0 0 0 4.5 7v3.2L2.8 12l1.7 1.8V17A2.5 2.5 0 0 0 7 19.5h1.5"/>
+      <path d="M15.5 4.5H17A2.5 2.5 0 0 1 19.5 7v3.2L21.2 12l-1.7 1.8V17a2.5 2.5 0 0 1-2.5 2.5h-1.5"/>
+      <path d="M12 8.6v6.8"/></svg>`,
+    svcAuto: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+      <rect x="4" y="8.5" width="16" height="11.5" rx="3"/><path d="M12 3.6v4.9"/><circle cx="12" cy="2.7" r="1.5" fill="currentColor" stroke="none"/>
+      <path d="M2.6 13.8h1.4M20 13.8h1.4"/><circle cx="9.4" cy="13.6" r="1.2" fill="currentColor" stroke="none"/>
+      <circle cx="14.6" cy="13.6" r="1.2" fill="currentColor" stroke="none"/><path d="M9.6 17h4.8"/></svg>`,
+
+    lock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
+      <rect x="4.5" y="10.5" width="15" height="10" rx="2.6"/>
+      <path d="M8 10.5V7.8a4 4 0 0 1 8 0v2.7"/><circle cx="12" cy="15.5" r="1.5" fill="currentColor" stroke="none"/></svg>`
   };
 
   const projectGlyphs = {
@@ -197,57 +216,95 @@
   // ---------------------------------------------------------
   // Projetos (mesma ordem do site anterior)
   // ---------------------------------------------------------
+  // locked: true = ainda em desenvolvimento (card bloqueado, sem link)
   const projects = [
     {
       num: '01',
-      title: 'API REST em Golang',
-      desc: 'API completa com persistência em banco de dados, construída em Go com foco em performance e organização clara das camadas da aplicação.',
+      title: 'Goportunitties',
+      desc: 'API REST completa em Go, com persistência em banco de dados e organização clara das camadas da aplicação, pensada para performance. Sem deploy: o repositório traz imagens e demonstrações de funcionamento.',
       tags: ['Golang', 'SQL', 'API REST'],
-      url: 'https://github.com/KaueChristian',
-      linkLabel: 'Ver projeto',
+      url: 'https://github.com/KaueChristian/Goportunitties',
+      linkLabel: 'Ver no GitHub',
+      locked: false,
       thumbClass: 'project__thumb--1',
       glyph: projectGlyphs.code
     },
     {
       num: '02',
-      title: 'Agenda com Web Scraping',
-      desc: 'Sistema de agenda alimentado por um serviço de web scraping, que coleta e organiza dados automaticamente através de requisições HTTPS.',
-      tags: ['Python', 'Web Scraping', 'Requests'],
-      url: 'https://github.com/KaueChristian',
-      linkLabel: 'Ver projeto',
-      thumbClass: 'project__thumb--2',
-      glyph: projectGlyphs.calendar
-    },
-    {
-      num: '03',
-      title: 'Gerenciador de Estoque',
-      desc: 'Software desktop para controle de estoque, com back-end em Python e SQLite e interface gráfica construída em Tkinter.',
-      tags: ['Python', 'SQLite', 'Tkinter'],
-      url: 'https://github.com/KaueChristian',
-      linkLabel: 'Ver projeto',
-      thumbClass: 'project__thumb--3',
-      glyph: projectGlyphs.box
-    },
-    {
-      num: '04',
-      title: 'Bot de Rede Social',
-      desc: 'Automação de tarefas repetitivas em redes sociais usando Selenium, incluindo o envio programado de mensagens.',
-      tags: ['Python', 'Selenium', 'Automação'],
-      url: 'https://github.com/KaueChristian',
-      linkLabel: 'Ver projeto',
-      thumbClass: 'project__thumb--4',
-      glyph: projectGlyphs.bot
-    },
-    {
-      num: '05',
       title: 'Encurtador de URL',
       desc: 'Encurtador de links com API em Flask e interface em Vue.js, incluindo tratamento e validação das URLs recebidas.',
       tags: ['Flask', 'Vue.js', 'Python'],
       url: 'https://urlcraft-fv59.onrender.com',
       linkLabel: 'Ver site',
+      locked: false,
       thumbClass: 'project__thumb--5',
       glyph: ''
+    },
+    {
+      num: '03',
+      title: 'Agenda com Web Scraping',
+      desc: 'Sistema de agenda alimentado por um serviço de web scraping, que coleta e organiza dados automaticamente através de requisições HTTPS.',
+      tags: ['Python', 'Web Scraping', 'Requests'],
+      url: 'https://github.com/KaueChristian',
+      linkLabel: 'Ver projeto',
+      locked: true,
+      thumbClass: 'project__thumb--2',
+      glyph: projectGlyphs.calendar
+    },
+    {
+      num: '04',
+      title: 'Gerenciador de Estoque',
+      desc: 'Software desktop para controle de estoque, com back-end em Python e SQLite e interface gráfica construída em Tkinter.',
+      tags: ['Python', 'SQLite', 'Tkinter'],
+      url: 'https://github.com/KaueChristian',
+      linkLabel: 'Ver projeto',
+      locked: true,
+      thumbClass: 'project__thumb--3',
+      glyph: projectGlyphs.box
+    },
+    {
+      num: '05',
+      title: 'Bot de Rede Social',
+      desc: 'Automação de tarefas repetitivas em redes sociais usando Selenium, incluindo o envio programado de mensagens.',
+      tags: ['Python', 'Selenium', 'Automação'],
+      url: 'https://github.com/KaueChristian',
+      linkLabel: 'Ver projeto',
+      locked: true,
+      thumbClass: 'project__thumb--4',
+      glyph: projectGlyphs.bot
     }
+  ];
+
+  // ---------------------------------------------------------
+  // Seção "Sobre": o que eu faço + no que estou agora
+  // ---------------------------------------------------------
+  const services = [
+    {
+      title: 'Desenvolvimento Full Stack',
+      desc: 'Do modelo de dados à interface: back-end em Python com Django e Flask, front-end em Vue e React.',
+      icon: icons.svcStack
+    },
+    {
+      title: 'Manutenção & Evolução',
+      desc: 'Atuação em bases legado — tratamento de erros, correção de defeitos e estabilidade de aplicações já em produção.',
+      icon: icons.svcMaintain
+    },
+    {
+      title: 'APIs & Integrações',
+      desc: 'Construção e consumo de APIs REST, integrando serviços e mantendo contratos claros entre as pontas.',
+      icon: icons.svcApi
+    },
+    {
+      title: 'Automação & Scraping',
+      desc: 'Coleta de dados e automação de tarefas repetitivas, transformando trabalho manual em rotina programada.',
+      icon: icons.svcAuto
+    }
+  ];
+
+  const now = [
+    { label: 'Trabalhando', value: 'Desenvolvedor Júnior II na Tron Sistemas' },
+    { label: 'Estudando', value: 'Engenharia de Software na Unigoiás — conclusão em 2026' },
+    { label: 'Aprofundando', value: 'Django, React e arquitetura de APIs REST' }
   ];
 
   // ---------------------------------------------------------
@@ -319,5 +376,8 @@
     { id: 'contato', label: 'Contato' }
   ];
 
-  global.PORTFOLIO_DATA = { age: 21, navItems, frameworks, experience, projects, skillGroups };
+  global.PORTFOLIO_DATA = {
+    age: 21, navItems, frameworks, experience, projects, skillGroups,
+    services, now, lockIcon: icons.lock
+  };
 })(window);

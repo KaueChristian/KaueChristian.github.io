@@ -20,16 +20,46 @@
         experience: data.experience,
         projects: data.projects,
         skillGroups: data.skillGroups,
+        services: data.services,
+        now: data.now,
+        lockIcon: data.lockIcon,
         year: new Date().getFullYear(),
         theme: document.documentElement.getAttribute('data-theme') || 'light',
         scrolled: false,
         showScrollTop: false,
         menuOpen: false,
-        activeSection: 'top'
+        activeSection: 'top',
+        projectFilter: 'todos',
+        denied: null,
+        deniedTimer: null,
+        revealObserver: null
       };
     },
 
+    computed: {
+      doneProjects() {
+        return this.projects.filter((project) => !project.locked);
+      },
+      visibleProjects() {
+        return this.projectFilter === 'concluidos' ? this.doneProjects : this.projects;
+      }
+    },
+
+    watch: {
+      // Ao filtrar, os cards que voltam são nós novos e precisam ser observados
+      projectFilter() {
+        this.$nextTick(this.refreshReveal);
+      }
+    },
+
     methods: {
+      // Clique em um projeto bloqueado: avisa em vez de navegar
+      denyAccess(project) {
+        this.denied = project.title;
+        clearTimeout(this.deniedTimer);
+        this.deniedTimer = setTimeout(() => { this.denied = null; }, 3200);
+      },
+
       toggleTheme() {
         this.theme = this.theme === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', this.theme);
@@ -51,15 +81,21 @@
 
       // Revela elementos .reveal conforme entram na viewport
       setupReveal() {
-        const els = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
+        this.revealObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
             entry.target.classList.add('in-view');
-            observer.unobserve(entry.target);
+            this.revealObserver.unobserve(entry.target);
           });
         }, { threshold: 0.12 });
-        els.forEach((el) => observer.observe(el));
+        this.refreshReveal();
+      },
+
+      // Observar um elemento já observado é no-op, então pode ser chamado sempre
+      refreshReveal() {
+        if (!this.revealObserver) return;
+        document.querySelectorAll('.reveal:not(.in-view)')
+          .forEach((el) => this.revealObserver.observe(el));
       },
 
       // Marca o link ativo da navbar conforme a seção visível
@@ -105,6 +141,8 @@
 
     unmounted() {
       window.removeEventListener('scroll', this.onScroll);
+      clearTimeout(this.deniedTimer);
+      if (this.revealObserver) this.revealObserver.disconnect();
     }
   }).mount('#app');
 })();
