@@ -1,0 +1,71 @@
+:root {
+  --bg-dark: #120c24;
+  --bg-dark-2: #1a1030;
+  --bg-light: #ffffff;
+  --bg-light-2: #f7f6fb;
+  --text-light: #f5f4fb;
+  --text-muted-light: #c9c4de;
+  --text-dark: #171226;
+  --text-muted: #6b6680;
+
+  --accent: #7c5cff;
+  --accent-2: #33d6c0;
+  --accent-3: #f472b6;
+  --accent-4: #3b82f6;
+  --accent-5: #f59e0b;
+
+  --radius-lg: 2px;
+  --radius-md: 2px;
+  --radius-sm: 2px;
+  --cut: 16px;
+  --cut-sm: 9px;
+
+  --shape-cut: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%);
+  --shape-cut-sm: polygon(0 0, calc(100% - var(--cut-sm)) 0, 100% var(--cut-sm), 100% 100%, 0 100%);
+  --max-width: 1180px;
+  --font: 'Outfit', system-ui, -apple-system, Segoe UI, sans-serif;
+
+  --card-bg: #ffffff;
+  --card-bg-2: #f7f6fb;
+  --border-soft: #eae7f5;
+  --border-soft-2: #ece9f7;
+  --border-strong: #d8d2ee;
+  --stat-hover-1: #f7f6fb;
+  --stat-hover-2: #eeecf9;
+  --shadow-rgb: 30, 20, 60;
+
+  --tech-ink: #10102a;
+  --tech-mix: 52%;
+  --tech-mix-icon: 88%;
+  color-scheme: light;
+
+  --grad-action: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 82%, var(--bg-dark)) 0%,
+    color-mix(in srgb, var(--accent) 48%, var(--bg-dark)) 100%
+  );
+
+  --accent-text: color-mix(in srgb, var(--accent) var(--tech-mix), var(--tech-ink));
+  --accent-3-text: color-mix(in srgb, var(--accent-3) var(--tech-mix), var(--tech-ink));
+  --accent-4-text: color-mix(in srgb, var(--accent-4) var(--tech-mix), var(--tech-ink));
+  --accent-5-text: color-mix(in srgb, var(--accent-5) var(--tech-mix), var(--tech-ink));
+}
+
+[data-theme="dark"] {
+  --bg-light: #140f28;
+  --bg-light-2: #1a1333;
+  --text-dark: #f2f0fa;
+  --text-muted: #a79fc9;
+  --card-bg: #1c1638;
+  --card-bg-2: #221a42;
+  --border-soft: rgba(255, 255, 255, 0.12);
+  --border-soft-2: rgba(255, 255, 255, 0.12);
+  --stat-hover-1: #1c1638;
+  --stat-hover-2: #241c46;
+  --border-strong: rgba(255, 255, 255, 0.22);
+  --shadow-rgb: 0, 0, 0;
+  --tech-ink: #ffffff;
+  --tech-mix: 78%;
+  --tech-mix-icon: 92%;
+  color-scheme: dark;
+}

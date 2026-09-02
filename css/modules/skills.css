@@ -1,0 +1,171 @@
+.skills {
+  background: var(--bg-light-2);
+  padding: 100px 0 110px;
+  transition: background-color 0.4s ease;
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+/* Animação do gradiente de fundo dos cards de habilidade */
+@keyframes skillcard-sweep {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+.skillcard {
+  position: relative;
+  overflow: hidden;
+  padding: 24px 26px 26px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 16px 36px -32px rgba(var(--shadow-rgb), 0.55);
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+.skillcard--wide {
+  grid-column: 1 / -1;
+}
+
+.skillcard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--group-gradient);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  animation: skillcard-sweep 8s ease-in-out infinite alternate;
+}
+
+.skillcard > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Faixa indicadora de categoria no topo do card */
+.skillcard::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 58px;
+  height: 3px;
+  background: var(--group-accent, var(--accent));
+  z-index: 2;
+}
+.skillcard:nth-child(1)::before { background: var(--group-accent, var(--accent)); }
+.skillcard:nth-child(2)::before { background: var(--group-accent, var(--accent-2)); }
+.skillcard:nth-child(3)::before { background: var(--group-accent, var(--accent-3)); }
+.skillcard:nth-child(4)::before { background: var(--group-accent, var(--accent-4)); }
+.skillcard:nth-child(5)::before { background: var(--group-accent, var(--accent-5)); }
+
+.skillcard__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-strong);
+  margin-bottom: 20px;
+}
+
+.skillcard__icon {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--group-accent, var(--accent));
+  background: var(--card-bg-2);
+  border: 1px solid var(--border-strong);
+}
+.skillcard__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.skillcard__head h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.skillcard__index {
+  margin-left: auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+}
+
+.skillcard__chips {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(156px, 1fr));
+  gap: 10px;
+}
+.skillcard--wide .skillcard__chips {
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+}
+
+/* Pílula / Chip individual da tecnologia */
+.tech {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 14px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  background: var(--card-bg-2);
+  border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--tech);
+  transition: transform 0.2s ease, background 0.25s ease, border-color 0.25s ease;
+}
+.tech:hover {
+  transform: translateX(3px);
+  background: color-mix(in srgb, var(--tech) 10%, var(--card-bg-2));
+  border-color: color-mix(in srgb, var(--tech) 38%, var(--border-strong));
+  border-left-color: var(--tech);
+}
+
+.tech__icon {
+  display: flex;
+  flex: 0 0 22px;
+  color: color-mix(in srgb, var(--tech) var(--tech-mix-icon), var(--tech-ink));
+}
+.tech__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.tech__name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 960px) {
+  .skills__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .skillcard {
+    padding: 22px 20px 24px;
+  }
+  .skillcard__chips,
+  .skillcard--wide .skillcard__chips {
+    grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  }
+  .tech {
+    padding: 11px 12px;
+    font-size: 0.88rem;
+    gap: 9px;
+  }
+}

@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=23">
+<link rel="stylesheet" href="css/style.css?v=31">
 </head>
 <body>
 
@@ -177,18 +177,36 @@
         </div>
 
         <div class="about__card-wrapper reveal">
-          <div class="facts-card glass-panel">
-            <div class="facts-card__header">
-              <span class="facts-card__badge">Ficha Técnica &amp; Destaques</span>
-              <span class="facts-card__status"><span class="facts-card__pulse"></span>Disponível</span>
+          <div class="about-profile-card glass-panel">
+            <div class="about-profile__ambient" aria-hidden="true"></div>
+
+            <div class="about-profile__head">
+              <span class="about-profile__label">// PERFIL</span>
+              <span class="about-profile__status">
+                <span class="about-profile__pulse"></span>
+                Disponível
+              </span>
             </div>
-            <ul class="facts">
-              <li class="facts__item"><span class="facts__key">Baseado em</span><span class="facts__value">Goiânia — GO, Brasil</span></li>
-              <li class="facts__item"><span class="facts__key">Experiência</span><span class="facts__value">3+ anos · Tron Sistemas</span></li>
-              <li class="facts__item"><span class="facts__key">Formação</span><span class="facts__value">Engenharia de Software (Unigoiás)</span></li>
-              <li class="facts__item"><span class="facts__key">Idiomas</span><span class="facts__value">Português (nativo) · Inglês (avançado)</span></li>
-              <li class="facts__item"><span class="facts__key">Foco de Atuação</span><span class="facts__value">Full Stack &amp; Back-End Escalável</span></li>
-            </ul>
+
+            <div class="about-profile__frame">
+              <img
+                src="assets/profile.jpg"
+                alt="Kaue Firmo — Desenvolvedor Full Stack"
+                class="about-profile__img"
+                loading="lazy"
+              >
+              <div class="about-profile__overlay">
+                <div class="about-profile__badge">
+                  <span class="about-profile__name">Kaue Firmo</span>
+                  <span class="about-profile__loc">Goiânia — GO</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-profile__footer">
+              <span class="about-profile__chip">Engenharia de Software</span>
+              <span class="about-profile__chip">Full Stack</span>
+            </div>
           </div>
         </div>
       </div>
@@ -517,7 +535,13 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
-<script src="js/data.js?v=16"></script>
-<script src="js/app.js?v=3"></script>
+<script src="js/data/icons.js?v=1"></script>
+<script src="js/data.js?v=17"></script>
+<script src="js/modules/theme.js?v=1"></script>
+<script src="js/modules/timeline.js?v=1"></script>
+<script src="js/modules/reveal.js?v=1"></script>
+<script src="js/modules/scroll-spy.js?v=1"></script>
+<script src="js/modules/spotlight.js?v=2"></script>
+<script src="js/app.js?v=6"></script>
 </body>
 </html>
