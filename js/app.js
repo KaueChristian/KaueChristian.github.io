@@ -20,6 +20,7 @@
         experience: data.experience,
         projects: data.projects,
         skillGroups: data.skillGroups,
+        pillars: data.pillars,
         services: data.services,
         now: data.now,
         lockIcon: data.lockIcon,
@@ -77,6 +78,61 @@
       onScroll() {
         this.scrolled = window.scrollY > 20;
         this.showScrollTop = window.scrollY > 600;
+        this.updateTimelineScroll();
+      },
+
+      // Animação progressiva e orientada ao scroll da timeline central
+      updateTimelineScroll() {
+        const timeline = this.$refs.centerTimeline || document.querySelector('.center-timeline');
+        if (!timeline) return;
+
+        const lineTrack = timeline.querySelector('.center-timeline__line');
+        const fillEl = timeline.querySelector('.center-timeline__fill');
+        const arrowEl = timeline.querySelector('.center-timeline__arrow');
+        const nodes = timeline.querySelectorAll('.timeline-node');
+        if (!lineTrack || !fillEl) return;
+
+        const lineRect = lineTrack.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Ponto de disparo / foco do laser (em 62% da altura da tela)
+        const triggerPoint = windowHeight * 0.62;
+
+        const lineTop = lineRect.top;
+        const lineHeight = lineRect.height;
+
+        // Calcula porcentagem exata de descida do traço
+        let progress = (triggerPoint - lineTop) / lineHeight;
+        progress = Math.max(0, Math.min(1, progress));
+
+        if (progress > 0.005) {
+          timeline.classList.add('has-scrolled');
+        } else {
+          timeline.classList.remove('has-scrolled');
+        }
+
+        fillEl.style.height = `${(progress * 100).toFixed(1)}%`;
+
+        // Ativa a seta na ponta quando o traço chega ao fim
+        if (arrowEl) {
+          if (progress >= 0.96) {
+            arrowEl.classList.add('is-active');
+          } else {
+            arrowEl.classList.remove('is-active');
+          }
+        }
+
+        // Ativa ou desativa cada nó/card individualmente conforme a ponta do traço o alcança
+        nodes.forEach((node) => {
+          const dotCenter = node.querySelector('.timeline-node__dot-center');
+          if (!dotCenter) return;
+          const dotRect = dotCenter.getBoundingClientRect();
+          if (dotRect.top <= triggerPoint + 6) {
+            node.classList.add('is-active');
+          } else {
+            node.classList.remove('is-active');
+          }
+        });
       },
 
       // Revela elementos .reveal conforme entram na viewport
@@ -117,30 +173,20 @@
 
     mounted() {
       window.addEventListener('scroll', this.onScroll, { passive: true });
+      window.addEventListener('resize', this.onScroll, { passive: true });
       this.onScroll();
 
       // As listas só existem depois do primeiro render
       this.$nextTick(() => {
         this.setupReveal();
         this.setupScrollSpy();
+        this.updateTimelineScroll();
       });
-
-      // A timeline do "Sobre" anima quando entra na tela
-      const stats = this.$refs.statsTimeline;
-      if (stats) {
-        const statsObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add('in-view');
-            statsObserver.unobserve(entry.target);
-          });
-        }, { threshold: 0.3 });
-        statsObserver.observe(stats);
-      }
     },
 
     unmounted() {
       window.removeEventListener('scroll', this.onScroll);
+      window.removeEventListener('resize', this.onScroll);
       clearTimeout(this.deniedTimer);
       if (this.revealObserver) this.revealObserver.disconnect();
     }

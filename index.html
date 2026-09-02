@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=10">
+<link rel="stylesheet" href="css/style.css?v=23">
 </head>
 <body>
 
@@ -100,52 +100,52 @@
           </div>
         </div>
 
-        <!-- Card de identidade -->
+        <!-- Painel de identidade -->
         <aside class="idcard">
-          <div class="idcard__frameworks">
-            <span
-              v-for="fw in frameworks"
-              :key="fw.name"
-              class="idcard__fw"
-              :style="{ '--tech': fw.color }"
-              :title="fw.name"
-            ><span class="idcard__fw-icon" v-html="fw.icon"></span></span>
-          </div>
-
-          <div class="idcard__age">
-            <span class="idcard__age-number">{{ age }}</span>
-            <span class="idcard__age-label">Anos</span>
-          </div>
-
-          <div class="idcard__location">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
-              <circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.7"/>
-            </svg>
-            <span>Goiânia — GO, Brasil</span>
-          </div>
-
-          <span class="idcard__rule" aria-hidden="true"></span>
-
-          <div class="idcard__stats">
-            <div class="idcard__stat">
-              <span class="idcard__stat-number">4+</span>
-              <span class="idcard__stat-label">Projetos</span>
-            </div>
-            <div class="idcard__stat">
-              <span class="idcard__stat-number">3+</span>
-              <span class="idcard__stat-label">Anos XP</span>
-            </div>
-          </div>
-
-          <span class="idcard__rule" aria-hidden="true"></span>
+          <header class="idcard__head">
+            <span class="idcard__head-tag">// perfil</span>
+            <span class="idcard__head-id">KF · GYN</span>
+          </header>
 
           <p class="idcard__title">Fullstack</p>
+          <p class="idcard__subtitle">Do banco de dados à interface.</p>
+
+          <dl class="idcard__specs">
+            <div class="idcard__spec">
+              <dt>Local</dt>
+              <dd>Goiânia — GO</dd>
+            </div>
+            <div class="idcard__spec">
+              <dt>Experiência</dt>
+              <dd>3+ anos</dd>
+            </div>
+            <div class="idcard__spec">
+              <dt>Projetos</dt>
+              <dd>4+</dd>
+            </div>
+            <div class="idcard__spec">
+              <dt>Status</dt>
+              <dd class="idcard__status"><span class="idcard__status-dot" aria-hidden="true"></span>Disponível</dd>
+            </div>
+          </dl>
+
+          <footer class="idcard__stack">
+            <span class="idcard__stack-label">Stack</span>
+            <div class="idcard__frameworks">
+              <span
+                v-for="fw in frameworks"
+                :key="fw.name"
+                class="idcard__fw"
+                :style="{ '--tech': fw.color }"
+                :title="fw.name"
+              ><span class="idcard__fw-icon" v-html="fw.icon"></span></span>
+            </div>
+          </footer>
         </aside>
       </div>
 
       <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0,64 C480,160 960,-32 1440,64 L1440,120 L0,120 Z"/>
+        <path d="M0,86 L520,30 L980,94 L1440,42 L1440,120 L0,120 Z"/>
       </svg>
     </section>
 
@@ -174,67 +174,80 @@
             <strong>organizados</strong> e <strong>eficientes</strong>.
           </p>
 
-          <ul class="facts">
-            <li class="facts__item"><span class="facts__key">Baseado em</span><span class="facts__value">Goiânia — GO, Brasil</span></li>
-            <li class="facts__item"><span class="facts__key">Experiência</span><span class="facts__value">3+ anos · atualmente na Tron Sistemas</span></li>
-            <li class="facts__item"><span class="facts__key">Idiomas</span><span class="facts__value">Português (nativo) · Inglês (avançado)</span></li>
-            <li class="facts__item"><span class="facts__key">Disponível para</span><span class="facts__value">Projetos e oportunidades full stack</span></li>
-          </ul>
         </div>
 
-        <div class="about__stats reveal" ref="statsTimeline">
-          <span class="stats-line" aria-hidden="true"><span class="stats-line__fill"></span></span>
-
-          <div class="stat-card">
-            <span class="stat-card__icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 3 3 8l9 5 9-5-9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                <path d="M3 13l9 5 9-5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-                <path d="M3 18l9 5 9-5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <span class="stat-card__body">
-              <span class="stat-card__number">Full Stack</span>
-              <span class="stat-card__label">Do banco de dados à interface</span>
-            </span>
-          </div>
-
-          <div class="stat-card">
-            <span class="stat-card__icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M15 7h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <span class="stat-card__body">
-              <span class="stat-card__number">Escalável</span>
-              <span class="stat-card__label">Sistemas prontos para crescer</span>
-            </span>
-          </div>
-
-          <div class="stat-card">
-            <span class="stat-card__icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <span class="stat-card__body">
-              <span class="stat-card__number">Eficiente</span>
-              <span class="stat-card__label">Código organizado e performático</span>
-            </span>
+        <div class="about__card-wrapper reveal">
+          <div class="facts-card glass-panel">
+            <div class="facts-card__header">
+              <span class="facts-card__badge">Ficha Técnica &amp; Destaques</span>
+              <span class="facts-card__status"><span class="facts-card__pulse"></span>Disponível</span>
+            </div>
+            <ul class="facts">
+              <li class="facts__item"><span class="facts__key">Baseado em</span><span class="facts__value">Goiânia — GO, Brasil</span></li>
+              <li class="facts__item"><span class="facts__key">Experiência</span><span class="facts__value">3+ anos · Tron Sistemas</span></li>
+              <li class="facts__item"><span class="facts__key">Formação</span><span class="facts__value">Engenharia de Software (Unigoiás)</span></li>
+              <li class="facts__item"><span class="facts__key">Idiomas</span><span class="facts__value">Português (nativo) · Inglês (avançado)</span></li>
+              <li class="facts__item"><span class="facts__key">Foco de Atuação</span><span class="facts__value">Full Stack &amp; Back-End Escalável</span></li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <!-- O que eu faço -->
-      <div class="section__inner about__block reveal">
-        <h3 class="about__block-title">O que eu faço</h3>
-        <div class="services" v-cloak>
-          <article class="service" v-for="service in services" :key="service.title">
-            <span class="service__icon" v-html="service.icon"></span>
-            <h4 class="service__title">{{ service.title }}</h4>
-            <p class="service__desc">{{ service.desc }}</p>
-          </article>
+      <!-- Pilares de Engenharia & Desenvolvimento (Timeline Central estilo erickdev) -->
+      <div class="section__inner about__block reveal" ref="pillarsTimeline">
+        <div class="section__head section__head--center">
+          <p class="eyebrow eyebrow--dark">Princípios &amp; Habilidades</p>
+          <h3 class="section__title">Como Eu Construo Software</h3>
+          <p class="section__paragraph">Padrões de engenharia, arquitetura e boas práticas consolidadas em cada etapa do ciclo de vida da aplicação.</p>
+        </div>
+
+        <div class="center-timeline" ref="centerTimeline" v-cloak>
+          <div class="center-timeline__line" aria-hidden="true">
+            <div class="center-timeline__fill"></div>
+            <div class="center-timeline__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+              </svg>
+            </div>
+          </div>
+
+          <div
+            v-for="(pillar, index) in pillars"
+            :key="pillar.num"
+            class="timeline-node"
+            :class="index % 2 === 0 ? 'timeline-node--left' : 'timeline-node--right'"
+            :style="{ '--node-color': pillar.color }"
+          >
+            <!-- Ponto central no traço e conector horizontal -->
+            <div class="timeline-node__track">
+              <span class="timeline-node__dot-center"></span>
+              <span class="timeline-node__arm"></span>
+              <span class="timeline-node__dot-card"></span>
+            </div>
+
+            <!-- Card de Habilidade -->
+            <article class="timeline-card glass-panel">
+              <header class="timeline-card__head">
+                <span class="timeline-card__icon" v-html="pillar.icon"></span>
+                <div class="timeline-card__titles">
+                  <div class="timeline-card__num-title">
+                    <span class="timeline-card__num">{{ pillar.num }}.</span>
+                    <h4 class="timeline-card__title">{{ pillar.title }}</h4>
+                  </div>
+                  <p class="timeline-card__sub">{{ pillar.subtitle }}</p>
+                </div>
+              </header>
+
+              <p class="timeline-card__desc">{{ pillar.desc }}</p>
+
+              <div class="timeline-card__chips">
+                <span class="timeline-chip" v-for="tag in pillar.tags" :key="tag.name">
+                  <span class="timeline-chip__icon" v-html="tag.icon"></span>
+                  <span class="timeline-chip__label">{{ tag.name }}</span>
+                </span>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
 
@@ -245,7 +258,7 @@
           Atualmente
         </h3>
         <div class="now" v-cloak>
-          <div class="now__item" v-for="item in now" :key="item.label">
+          <div class="now__item glass-panel" v-for="item in now" :key="item.label">
             <span class="now__label">{{ item.label }}</span>
             <span class="now__value">{{ item.value }}</span>
           </div>
@@ -263,9 +276,9 @@
         </div>
 
         <div class="companies" v-cloak>
-          <article class="company reveal" v-for="company in experience" :key="company.name">
+          <article class="company reveal" :class="{ 'company--glow': company.glow }" :style="{ '--brand': company.color }" v-for="company in experience" :key="company.name">
             <header class="company__head">
-              <span class="company__logo" :style="{ '--brand': company.color }">{{ company.short }}</span>
+              <span class="company__logo">{{ company.short }}</span>
               <div class="company__id">
                 <h3 class="company__name">{{ company.name }}</h3>
                 <p class="company__meta">{{ company.duration }} · {{ company.location }}</p>
@@ -320,7 +333,8 @@
         <div class="projects__grid" v-cloak>
           <article
             class="project reveal"
-            :class="project.locked ? 'project--locked' : ''"
+            :class="[project.locked ? 'project--locked' : '', { 'project--glow': project.glow }]"
+            :style="project.glow ? { '--proj-accent': project.accent, '--proj-accent-2': project.accent2, '--proj-accent-3': project.accent3 } : {}"
             v-for="project in visibleProjects"
             :key="project.title"
             @click="project.locked && denyAccess(project)"
@@ -391,10 +405,11 @@
         </div>
 
         <div class="skills__grid" v-cloak>
-          <section class="skillcard reveal" v-for="group in skillGroups" :key="group.title" :class="group.wide ? 'skillcard--wide' : ''">
+          <section class="skillcard reveal" v-for="(group, index) in skillGroups" :key="group.title" :class="group.wide ? 'skillcard--wide' : ''" :style="{ '--group-accent': group.accent, '--group-gradient': group.gradient }">
             <header class="skillcard__head">
               <span class="skillcard__icon" v-html="group.icon"></span>
               <h3>{{ group.title }}</h3>
+              <span class="skillcard__index" aria-hidden="true">{{ String(index + 1).padStart(2, '0') }}</span>
             </header>
             <div class="skillcard__chips">
               <span class="tech" v-for="tech in group.items" :key="tech.name" :style="{ '--tech': tech.color }">
@@ -416,8 +431,8 @@
         </div>
 
         <div class="education__grid">
-          <div class="reveal">
-            <div class="edu-card">
+          <div class="edu-list reveal">
+            <div class="edu-card glass-panel">
               <span class="edu-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
                   <path d="m12 4 9 4.5-9 4.5-9-4.5L12 4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
@@ -431,7 +446,7 @@
               </div>
             </div>
 
-            <div class="edu-card">
+            <div class="edu-card glass-panel">
               <span class="edu-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
                   <path d="M5 3.5h14v17l-7-3.4-7 3.4v-17Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
@@ -446,11 +461,11 @@
 
           <div class="reveal">
             <div class="lang-list">
-              <div class="lang-item">
+              <div class="lang-item glass-panel">
                 <span class="lang-item__name">Português</span>
                 <span class="lang-item__level">Nativo</span>
               </div>
-              <div class="lang-item">
+              <div class="lang-item glass-panel">
                 <span class="lang-item__name">Inglês</span>
                 <span class="lang-item__level">Avançado</span>
               </div>
@@ -463,7 +478,7 @@
     <!-- ===== CONTATO ===== -->
     <section class="contact" id="contato">
       <svg class="wave wave--top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0,64 C480,-32 960,160 1440,64 L1440,0 L0,0 Z"/>
+        <path d="M0,34 L520,90 L980,26 L1440,78 L1440,0 L0,0 Z"/>
       </svg>
 
       <div class="section__inner contact__inner reveal">
@@ -502,7 +517,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
-<script src="js/data.js?v=1"></script>
-<script src="js/app.js?v=1"></script>
+<script src="js/data.js?v=16"></script>
+<script src="js/app.js?v=3"></script>
 </body>
 </html>
