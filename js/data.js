@@ -52,13 +52,17 @@
     {
       num: '01',
       title: 'Goportunitties',
-      desc: 'API REST completa em Go, com persistência em banco de dados e organização clara das camadas da aplicação, pensada para performance. Sem deploy: o repositório traz imagens e demonstrações de funcionamento.',
-      tags: ['Golang', 'SQL', 'API REST'],
+      desc: 'Painel completo e API REST em Go (Gin + GORM + SQLite) com interface web em React para busca, publicação e métricas de vagas tech em tempo real.',
+      tags: ['Golang', 'React', 'TypeScript', 'SQLite', 'API REST'],
       url: 'https://github.com/KaueChristian/Goportunitties',
       linkLabel: 'Ver no GitHub',
       locked: false,
       thumbClass: 'project__thumb--1',
-      glyph: projectGlyphs.code
+      glyph: '',
+      glow: true,
+      accent: '#2A78D6',
+      accent2: '#199E70',
+      accent3: '#9085E9'
     },
     {
       num: '02',

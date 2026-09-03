@@ -1,44 +1,39 @@
 .experience {
   --sec-tint: var(--accent-2);
   background: var(--bg-light-2);
-  padding: 100px 0 110px;
-  transition: background-color 0.4s ease;
+  padding: 112px 0 120px;
+  transition: background-color var(--dur-3) ease;
 }
 
 .companies {
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 24px;
 }
 
 .company {
+  position: relative;
   padding: 28px 30px 8px;
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--card-bg) 88%, var(--sec-tint) 12%);
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
   border: 1px solid var(--border-strong);
-  box-shadow: 0 22px 48px -34px rgba(var(--shadow-rgb), 0.4);
-  transition: background-color 0.4s ease, border-color 0.4s ease;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: background-color var(--dur-3) ease, border-color var(--dur-3) ease, box-shadow var(--dur-2) ease;
 }
 
 .company--glow {
-  position: relative;
-  overflow: hidden;
+  border-color: color-mix(in srgb, var(--brand) 30%, var(--border-strong));
 }
-
 .company--glow::before {
   content: '';
   position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(
-    120deg,
-    transparent 15%,
-    color-mix(in srgb, var(--brand) 26%, transparent) 50%,
-    transparent 85%
-  );
-  background-size: 240% 240%;
-  background-position: 0% 50%;
-  animation: brand-sweep 11s ease-in-out infinite alternate;
+  top: -1px;
+  left: 24px;
+  right: 24px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--brand), transparent);
+  opacity: 0.8;
 }
 
 .company__head {
@@ -51,17 +46,18 @@
 }
 
 .company__logo {
-  flex: 0 0 52px;
-  width: 52px;
-  height: 52px;
+  flex: 0 0 50px;
+  width: 50px;
+  height: 50px;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: var(--font-mono);
   background: var(--brand);
   color: #fff;
-  font-weight: 700;
-  font-size: 0.95rem;
+  font-weight: 600;
+  font-size: 0.92rem;
   letter-spacing: 0.01em;
 }
 
@@ -70,25 +66,26 @@
   min-width: 0;
 }
 .company__name {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-size: 1.22rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 .company__meta {
-  font-size: 0.88rem;
+  font-size: 0.87rem;
   color: var(--text-muted);
 }
 
 .company__badge {
   flex: 0 0 auto;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fff;
   background: var(--grad-action);
-  padding: 5px 13px;
-  clip-path: var(--shape-cut-sm);
+  padding: 5px 12px;
+  border-radius: var(--radius-xs);
 }
 
 .roles {
@@ -97,7 +94,7 @@
 
 .role {
   position: relative;
-  padding-left: 30px;
+  padding-left: 28px;
   padding-bottom: 30px;
 }
 .role:last-child {
@@ -107,10 +104,10 @@
 .role::before {
   content: '';
   position: absolute;
-  left: 6px;
-  top: 20px;
+  left: 5px;
+  top: 18px;
   bottom: -2px;
-  width: 2px;
+  width: 1.5px;
   background: var(--border-soft);
 }
 .role:last-child::before {
@@ -120,23 +117,23 @@
 .role__dot {
   position: absolute;
   left: 0;
-  top: 6px;
-  width: 12px;
-  height: 12px;
-  transform: rotate(45deg);
+  top: 5px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
   background: var(--card-bg);
-  border: 3px solid var(--accent);
-  box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.12);
-  transition: background-color 0.4s ease;
+  border: 2.5px solid var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 12%, transparent);
+  transition: background-color var(--dur-3) ease;
 }
 .role:first-child .role__dot {
   border-color: var(--accent-2);
-  box-shadow: 0 0 0 4px rgba(51, 214, 192, 0.16);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 16%, transparent);
 }
 
 .role__title {
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.03rem;
+  font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 6px;
 }
@@ -146,20 +143,21 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  font-size: 0.83rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
   margin-bottom: 3px;
 }
 
 .role__type {
-  font-weight: 700;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent-text);
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
-  padding: 3px 10px;
-  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--accent) 11%, transparent);
+  padding: 3px 9px;
+  border-radius: var(--radius-xs);
 }
 
 .role__duration::before {
@@ -167,15 +165,16 @@
 }
 
 .role__place {
-  font-size: 0.83rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
-  opacity: 0.85;
   margin-bottom: 10px;
 }
 
 .role__desc {
-  font-size: 0.95rem;
-  color: var(--text-muted);
+  font-size: 0.96rem;
+  font-weight: 400;
+  line-height: 1.66;
+  color: var(--text-body);
   max-width: 62ch;
 }
 

@@ -14,8 +14,8 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=31">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=37">
 </head>
 <body>
 
@@ -180,32 +180,85 @@
           <div class="about-profile-card glass-panel">
             <div class="about-profile__ambient" aria-hidden="true"></div>
 
-            <div class="about-profile__head">
-              <span class="about-profile__label">// PERFIL</span>
+            <div class="about-terminal__head">
+              <div class="about-terminal__dots" aria-hidden="true">
+                <span class="about-terminal__dot about-terminal__dot--red"></span>
+                <span class="about-terminal__dot about-terminal__dot--yellow"></span>
+                <span class="about-terminal__dot about-terminal__dot--green"></span>
+              </div>
+              <div class="about-terminal__tab">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="about-terminal__tab-icon" aria-hidden="true">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                <span>kaue.config.ts</span>
+              </div>
               <span class="about-profile__status">
                 <span class="about-profile__pulse"></span>
                 Disponível
               </span>
             </div>
 
-            <div class="about-profile__frame">
-              <img
-                src="assets/profile.jpg"
-                alt="Kaue Firmo — Desenvolvedor Full Stack"
-                class="about-profile__img"
-                loading="lazy"
-              >
-              <div class="about-profile__overlay">
-                <div class="about-profile__badge">
-                  <span class="about-profile__name">Kaue Firmo</span>
-                  <span class="about-profile__loc">Goiânia — GO</span>
-                </div>
+            <!-- Bloco de código com realce de sintaxe -->
+            <div class="about-terminal__code">
+              <div class="about-code__line">
+                <span class="about-code__num">1</span>
+                <span class="about-code__content"><span class="code-kw">const</span> <span class="code-def">engineer</span> = {</span>
+              </div>
+              <div class="about-code__line">
+                <span class="about-code__num">2</span>
+                <span class="about-code__content">  <span class="code-prop">nome</span>: <span class="code-str">'Kaue Firmo'</span>,</span>
+              </div>
+              <div class="about-code__line">
+                <span class="about-code__num">3</span>
+                <span class="about-code__content">  <span class="code-prop">funcao</span>: <span class="code-str">'Full Stack Developer'</span>,</span>
+              </div>
+              <div class="about-code__line">
+                <span class="about-code__num">4</span>
+                <span class="about-code__content">  <span class="code-prop">foco</span>: <span class="code-str">'Sistemas Críticos &amp; APIs'</span>,</span>
+              </div>
+              <div class="about-code__line">
+                <span class="about-code__num">5</span>
+                <span class="about-code__content">  <span class="code-prop">status</span>: <span class="code-val">Status.Ready</span><span class="about-code__cursor" aria-hidden="true">_</span></span>
+              </div>
+              <div class="about-code__line">
+                <span class="about-code__num">6</span>
+                <span class="about-code__content">};</span>
               </div>
             </div>
 
+            <!-- Grid de Telemetria Técnica -->
+            <div class="about-telemetry">
+              <div class="about-telemetry__item">
+                <span class="about-telemetry__label">// ATUAÇÃO</span>
+                <strong class="about-telemetry__val">Tron Sistemas</strong>
+                <span class="about-telemetry__sub">Desenvolvedor Jr II</span>
+              </div>
+              <div class="about-telemetry__item">
+                <span class="about-telemetry__label">// FORMAÇÃO</span>
+                <strong class="about-telemetry__val">Eng. de Software</strong>
+                <span class="about-telemetry__sub">Unigoiás · 2026</span>
+              </div>
+              <div class="about-telemetry__item">
+                <span class="about-telemetry__label">// METODOLOGIA</span>
+                <strong class="about-telemetry__val">Clean Code</strong>
+                <span class="about-telemetry__sub">SOLID &amp; Resiliência</span>
+              </div>
+              <div class="about-telemetry__item">
+                <span class="about-telemetry__label">// BASE</span>
+                <strong class="about-telemetry__val">Goiânia — GO</strong>
+                <span class="about-telemetry__sub">Remoto / Híbrido</span>
+              </div>
+            </div>
+
+            <!-- Chips de Stacks -->
             <div class="about-profile__footer">
-              <span class="about-profile__chip">Engenharia de Software</span>
-              <span class="about-profile__chip">Full Stack</span>
+              <span class="about-profile__chip">Python</span>
+              <span class="about-profile__chip">Delphi</span>
+              <span class="about-profile__chip">Vue.js</span>
+              <span class="about-profile__chip">TypeScript</span>
+              <span class="about-profile__chip">SQL</span>
+              <span class="about-profile__chip">Golang</span>
             </div>
           </div>
         </div>
@@ -536,7 +589,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
 <script src="js/data/icons.js?v=1"></script>
-<script src="js/data.js?v=17"></script>
+<script src="js/data.js?v=18"></script>
 <script src="js/modules/theme.js?v=1"></script>
 <script src="js/modules/timeline.js?v=1"></script>
 <script src="js/modules/reveal.js?v=1"></script>
