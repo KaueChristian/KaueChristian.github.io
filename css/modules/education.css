@@ -42,6 +42,10 @@
   color: var(--accent);
   background: linear-gradient(135deg, var(--stat-hover-1), var(--stat-hover-2));
   border: 1px solid var(--border-soft);
+  transition: transform var(--dur-2) var(--ease);
+}
+.edu-card:hover .edu-card__icon {
+  transform: scale(1.08) rotate(-3deg);
 }
 .edu-card__icon svg {
   width: 20px;

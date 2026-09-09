@@ -10,11 +10,12 @@
   position: absolute;
   top: -220px;
   left: 50%;
-  transform: translateX(-50%);
   width: 700px;
   height: 440px;
+  margin-left: -350px;
   background: radial-gradient(ellipse, color-mix(in srgb, var(--accent) 22%, transparent) 0%, transparent 70%);
   pointer-events: none;
+  animation: blob-drift 24s ease-in-out infinite;
 }
 
 .contact__inner {
@@ -35,6 +36,10 @@
   letter-spacing: -0.035em;
   color: var(--text-light);
   margin-bottom: 22px;
+}
+.contact__title .dot {
+  display: inline-block;
+  animation: dot-beat 2.2s ease-in-out infinite;
 }
 
 .contact__subtitle {
@@ -83,6 +88,18 @@
   font-weight: 500;
   font-size: 1rem;
   word-break: break-word;
+}
+.contact__link-value::after {
+  content: '→';
+  display: inline-block;
+  margin-left: 6px;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity var(--dur-2) ease, transform var(--dur-2) var(--ease);
+}
+.contact__link:hover .contact__link-value::after {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .footer {

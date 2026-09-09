@@ -86,6 +86,7 @@
   background: var(--grad-action);
   padding: 5px 12px;
   border-radius: var(--radius-xs);
+  animation: badge-glow 2.6s ease-in-out infinite;
 }
 
 .roles {
@@ -96,7 +97,18 @@
   position: relative;
   padding-left: 28px;
   padding-bottom: 30px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
 }
+.company.in-view .role {
+  opacity: 1;
+  transform: translateY(0);
+}
+.role:nth-child(1) { transition-delay: 0.08s; }
+.role:nth-child(2) { transition-delay: 0.16s; }
+.role:nth-child(3) { transition-delay: 0.24s; }
+.role:nth-child(4) { transition-delay: 0.32s; }
 .role:last-child {
   padding-bottom: 26px;
 }
@@ -129,6 +141,8 @@
 .role:first-child .role__dot {
   border-color: var(--accent-2);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 16%, transparent);
+  --pulse-color: var(--accent-2);
+  animation: pulse-ring 2.2s ease-out infinite;
 }
 
 .role__title {

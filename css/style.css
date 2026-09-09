@@ -2,15 +2,15 @@
    Arquitetura modular por componentes e seções
    ========================================================================== */
 
-@import './modules/variables.css';
-@import './modules/base.css';
-@import './modules/animations.css';
-@import './modules/components.css';
-@import './modules/navbar.css';
-@import './modules/hero.css';
-@import './modules/about.css';
-@import './modules/experience.css';
-@import './modules/projects.css';
-@import './modules/skills.css';
-@import './modules/education.css';
-@import './modules/contact.css';
+@import './modules/variables.css?v=2';
+@import './modules/base.css?v=2';
+@import './modules/animations.css?v=2';
+@import './modules/components.css?v=2';
+@import './modules/navbar.css?v=2';
+@import './modules/hero.css?v=2';
+@import './modules/about.css?v=2';
+@import './modules/experience.css?v=2';
+@import './modules/projects.css?v=2';
+@import './modules/skills.css?v=2';
+@import './modules/education.css?v=2';
+@import './modules/contact.css?v=2';
