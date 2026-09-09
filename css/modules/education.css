@@ -1,0 +1,113 @@
+.education {
+  --sec-tint: var(--accent-3);
+  background: var(--bg-light);
+  padding: 112px 0 128px;
+  transition: background-color var(--dur-3) ease;
+}
+
+.education__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: start;
+}
+.education__grid > * {
+  min-width: 0;
+}
+
+.edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.edu-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 24px;
+  border-radius: var(--radius-md);
+}
+
+.edu-card__icon {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  background: linear-gradient(135deg, var(--stat-hover-1), var(--stat-hover-2));
+  border: 1px solid var(--border-soft);
+}
+.edu-card__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.edu-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.edu-card__body h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.edu-card__place {
+  font-size: 0.88rem;
+  color: var(--text-body);
+}
+.edu-card__meta {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  margin-top: 3px;
+}
+
+.lang-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lang-item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 15px 22px;
+  border-radius: var(--radius-md);
+}
+.lang-item__name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+.lang-item__level {
+  font-family: var(--font-mono);
+  font-size: 0.71rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--grad-action);
+  padding: 4px 11px;
+  border-radius: var(--radius-xs);
+}
+
+@media (max-width: 960px) {
+  .education__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}

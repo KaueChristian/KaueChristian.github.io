@@ -1,0 +1,93 @@
+:root {
+  /* ---- Superfícies fixas (Hero / Contato — sempre escuras) ---- */
+  --bg-dark: #0a0814;
+  --bg-dark-2: #130f21;
+
+  /* ---- Superfícies das seções centrais (alternam com o tema) ---- */
+  --bg-light: #ffffff;
+  --bg-light-2: #f6f5f9;
+
+  /* ---- Texto fixo (sobre --bg-dark / --bg-dark-2) ---- */
+  --text-light: #f7f6fb;
+  --text-muted-light: #b6afd2;
+
+  /* ---- Texto das seções centrais (alterna com o tema) ---- */
+  --text-dark: #130f1c;
+  --text-body: #423b56;
+  --text-muted: #726c84;
+
+  /* ---- Acentos ---- */
+  --accent: #6d5cf0;
+  --accent-2: #2bd4b2;
+  --accent-3: #ef6ea8;
+  --accent-4: #4f8dff;
+  --accent-5: #e7a13c;
+
+  /* ---- Forma ---- */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --max-width: 1180px;
+
+  /* ---- Tipografia ---- */
+  --font: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* ---- Movimento ---- */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-1: 160ms;
+  --dur-2: 260ms;
+  --dur-3: 440ms;
+
+  /* ---- Superfícies de cartão / bordas (alternam com o tema) ---- */
+  --card-bg: #ffffff;
+  --card-bg-2: #f6f5f9;
+  --border-soft: #e9e6f1;
+  --border-soft-2: #edeaf3;
+  --border-strong: #dbd6ea;
+  --stat-hover-1: #f6f5f9;
+  --stat-hover-2: #edebf6;
+  --shadow-rgb: 22, 16, 46;
+
+  --tech-ink: #100d1c;
+  --tech-mix: 54%;
+  --tech-mix-icon: 88%;
+  color-scheme: light;
+
+  /* ---- Sombras (usam --shadow-rgb, respondem ao tema) ---- */
+  --shadow-xs: 0 1px 2px rgba(var(--shadow-rgb), 0.07);
+  --shadow-sm: 0 6px 20px -12px rgba(var(--shadow-rgb), 0.32);
+  --shadow-md: 0 20px 44px -20px rgba(var(--shadow-rgb), 0.32);
+  --shadow-lg: 0 34px 76px -28px rgba(var(--shadow-rgb), 0.4);
+
+  --grad-action: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 72%, #2a1f66) 100%);
+  --shadow-glow: 0 14px 34px -16px color-mix(in srgb, var(--accent) 58%, transparent);
+
+  --accent-text: color-mix(in srgb, var(--accent) var(--tech-mix), var(--tech-ink));
+  --accent-3-text: color-mix(in srgb, var(--accent-3) var(--tech-mix), var(--tech-ink));
+  --accent-4-text: color-mix(in srgb, var(--accent-4) var(--tech-mix), var(--tech-ink));
+  --accent-5-text: color-mix(in srgb, var(--accent-5) var(--tech-mix), var(--tech-ink));
+}
+
+[data-theme="dark"] {
+  --bg-light: #0f0c1a;
+  --bg-light-2: #141024;
+  --text-dark: #f4f2f9;
+  --text-body: #d8d3e8;
+  --text-muted: #a49dc0;
+  --text-muted-light: #b6afd2;
+  --card-bg: #17132a;
+  --card-bg-2: #1c1732;
+  --border-soft: rgba(255, 255, 255, 0.09);
+  --border-soft-2: rgba(255, 255, 255, 0.1);
+  --stat-hover-1: #17132a;
+  --stat-hover-2: #1e1936;
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --shadow-rgb: 0, 0, 0;
+  --tech-ink: #ffffff;
+  --tech-mix: 80%;
+  --tech-mix-icon: 94%;
+  color-scheme: dark;
+}

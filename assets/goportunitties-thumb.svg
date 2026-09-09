@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" role="img" aria-label="Goportunitties — Painel de Vagas em Go">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f17"/>
+      <stop offset="100%" stop-color="#06090e"/>
+    </linearGradient>
+    <linearGradient id="blueCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(42, 120, 214, 0.22)"/>
+      <stop offset="100%" stop-color="rgba(42, 120, 214, 0.08)"/>
+    </linearGradient>
+    <linearGradient id="greenCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(25, 158, 112, 0.22)"/>
+      <stop offset="100%" stop-color="rgba(25, 158, 112, 0.08)"/>
+    </linearGradient>
+    <linearGradient id="purpleCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(144, 133, 233, 0.22)"/>
+      <stop offset="100%" stop-color="rgba(144, 133, 233, 0.08)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo do Card -->
+  <rect width="480" height="280" fill="url(#bgGrad)"/>
+
+  <!-- Grid pontilhada decorativa no canto superior direito -->
+  <g fill="#2a78d6" opacity="0.22">
+    <circle cx="370" cy="36" r="1.5"/><circle cx="386" cy="36" r="1.5"/><circle cx="402" cy="36" r="1.5"/><circle cx="418" cy="36" r="1.5"/><circle cx="434" cy="36" r="1.5"/>
+    <circle cx="370" cy="50" r="1.5"/><circle cx="386" cy="50" r="1.5"/><circle cx="402" cy="50" r="1.5"/><circle cx="418" cy="50" r="1.5"/><circle cx="434" cy="50" r="1.5"/>
+    <circle cx="370" cy="64" r="1.5"/><circle cx="386" cy="64" r="1.5"/><circle cx="402" cy="64" r="1.5"/><circle cx="418" cy="64" r="1.5"/><circle cx="434" cy="64" r="1.5"/>
+    <circle cx="370" cy="78" r="1.5"/><circle cx="386" cy="78" r="1.5"/><circle cx="402" cy="78" r="1.5"/><circle cx="418" cy="78" r="1.5"/><circle cx="434" cy="78" r="1.5"/>
+  </g>
+
+  <!-- Círculo abstrato sutil de fundo -->
+  <circle cx="380" cy="115" r="92" fill="#2a78d6" opacity="0.08"/>
+
+  <!-- Mini Header / Tag de Status no Topo -->
+  <g transform="translate(32, 28)">
+    <!-- Ícone Bússola do Goportunitties -->
+    <rect width="26" height="26" rx="7" fill="#2a78d6"/>
+    <path d="M13 7.5 C9.96 7.5 7.5 9.96 7.5 13 C7.5 16.04 9.96 18.5 13 18.5 C16.04 18.5 18.5 16.04 18.5 13 C18.5 9.96 16.04 7.5 13 7.5 Z M15.4 10.6 L14.1 14.1 L10.6 15.4 L11.9 11.9 Z" fill="#ffffff"/>
+
+    <text x="35" y="18" font-family="Plus Jakarta Sans, Roboto, sans-serif" font-weight="800" font-size="14" fill="#ffffff" letter-spacing="0.4">Goportunitties</text>
+
+    <!-- Badge ao lado -->
+    <rect x="156" y="2" width="138" height="22" rx="11" fill="rgba(42, 120, 214, 0.18)" stroke="rgba(57, 135, 229, 0.35)" stroke-width="1"/>
+    <circle cx="168" cy="13" r="3.5" fill="#2a78d6"/>
+    <text x="178" y="17" font-family="Plus Jakarta Sans, Roboto, sans-serif" font-weight="700" font-size="9.5" fill="#9ec5f4">65 VAGAS ABERTAS</text>
+  </g>
+
+  <!-- Headline Central -->
+  <g transform="translate(32, 86)">
+    <text x="0" y="0" font-family="Plus Jakarta Sans, Roboto, sans-serif" font-weight="900" font-size="21" fill="#ffffff" letter-spacing="-0.5">
+      Encontre a vaga que
+    </text>
+    <g transform="translate(0, 10)">
+      <!-- Retângulo de destaque sob 'combina' -->
+      <rect x="0" y="-1" width="94" height="23" rx="5" fill="rgba(42, 120, 214, 0.28)" stroke="rgba(57, 135, 229, 0.45)" stroke-width="1"/>
+      <text x="47" y="16" text-anchor="middle" font-family="Plus Jakarta Sans, Roboto, sans-serif" font-weight="900" font-size="17" fill="#3987e5">
+        combina
+      </text>
+      <text x="104" y="16" font-family="Plus Jakarta Sans, Roboto, sans-serif" font-weight="800" font-size="17" fill="#ffffff" letter-spacing="-0.3">
+        com a sua carreira
+      </text>
+    </g>
+    <text x="0" y="48" font-family="Roboto, sans-serif" font-size="10.5" fill="#898781">
+      API REST em Go (Gin + GORM) &amp; Interface React embutida
+    </text>
+  </g>
+
+  <!-- Três Cards de Métricas (Azul, Verde/Remote, Roxo/Onsite) -->
+  <g transform="translate(32, 160)">
+    <!-- Card 1: Vagas Publicadas -->
+    <rect x="0" y="0" width="130" height="66" rx="12" fill="url(#blueCardGrad)" stroke="rgba(42, 120, 214, 0.35)" stroke-width="1"/>
+    <text x="14" y="28" font-family="Plus Jakarta Sans, Roboto, sans-serif" font-weight="900" font-size="20" fill="#ffffff">65</text>
+    <text x="14" y="44" font-family="Roboto, sans-serif" font-weight="700" font-size="8.5" fill="#9ec5f4">Vagas publicadas</text>
+    <text x="14" y="55" font-family="Roboto, sans-serif" font-size="7.5" fill="#898781">em 34 empresas</text>
+    <rect x="88" y="14" width="28" height="28" rx="8" fill="#2a78d6"/>
+    <!-- Ícone Maleta -->
+    <path d="M97 23 h10 v11 h-10 Z M100 23 v-2 a2 2 0 0 1 4 0 v2" fill="none" stroke="#ffffff" stroke-width="1.4"/>
+
+    <!-- Card 2: Remotas -->
+    <rect x="143" y="0" width="130" height="66" rx="12" fill="url(#greenCardGrad)" stroke="rgba(25, 158, 112, 0.35)" stroke-width="1"/>
+    <text x="157" y="28" font-family="Plus Jakarta Sans, Roboto, sans-serif" font-weight="900" font-size="20" fill="#ffffff">43</text>
+    <text x="157" y="44" font-family="Roboto, sans-serif" font-weight="700" font-size="8.5" fill="#6fd6ae">Oportunidades remotas</text>
+    <text x="157" y="55" font-family="Roboto, sans-serif" font-size="7.5" fill="#898781">66% do total</text>
+    <rect x="231" y="14" width="28" height="28" rx="8" fill="#199e70"/>
+    <!-- Ícone Wi-Fi / Remoto -->
+    <path d="M239 29 a7 7 0 0 1 12 0 M241 31 a4 4 0 0 1 8 0 M245 33 a1 1 0 0 1 0 1" fill="none" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round"/>
+
+    <!-- Card 3: Salário / Dashboard -->
+    <rect x="286" y="0" width="130" height="66" rx="12" fill="url(#purpleCardGrad)" stroke="rgba(144, 133, 233, 0.35)" stroke-width="1"/>
+    <text x="300" y="28" font-family="Plus Jakarta Sans, Roboto, sans-serif" font-weight="900" font-size="18" fill="#ffffff">R$ 8.5k</text>
+    <text x="300" y="44" font-family="Roboto, sans-serif" font-weight="700" font-size="8.5" fill="#b9b2f2">Salário mediano</text>
+    <text x="300" y="55" font-family="Roboto, sans-serif" font-size="7.5" fill="#898781">mercado tech BR</text>
+    <rect x="374" y="14" width="28" height="28" rx="8" fill="#7c5cd6"/>
+    <!-- Ícone Cifrão -->
+    <text x="388" y="33" text-anchor="middle" font-family="Roboto, sans-serif" font-weight="800" font-size="14" fill="#ffffff">$</text>
+  </g>
+
+  <!-- Faixa de Listras Inferior nas Cores da Marca (Azul, Verde Remoto e Roxo Onsite) -->
+  <g>
+    <clipPath id="goportunittiesStripeClip"><rect x="0" y="264" width="480" height="16"/></clipPath>
+    <g clip-path="url(#goportunittiesStripeClip)">
+      <rect x="0" y="264" width="480" height="16" fill="#2a78d6"/>
+      <!-- Listras verdes inclinadas -->
+      <g fill="#199e70">
+        <polygon points="0,280 20,264 34,264 14,280"/>
+        <polygon points="40,280 60,264 74,264 54,280"/>
+        <polygon points="80,280 100,264 114,264 94,280"/>
+        <polygon points="120,280 140,264 154,264 134,280"/>
+        <polygon points="160,280 180,264 194,264 174,280"/>
+        <polygon points="200,280 220,264 234,264 214,280"/>
+        <polygon points="240,280 260,264 274,264 254,280"/>
+        <polygon points="280,280 300,264 314,264 294,280"/>
+        <polygon points="320,280 340,264 354,264 334,280"/>
+        <polygon points="360,280 380,264 394,264 374,280"/>
+        <polygon points="400,280 420,264 434,264 414,280"/>
+        <polygon points="440,280 460,264 474,264 454,280"/>
+      </g>
+      <!-- Listras roxas inclinadas -->
+      <g fill="#7c5cd6">
+        <polygon points="10,280 30,264 44,264 24,280"/>
+        <polygon points="50,280 70,264 84,264 64,280"/>
+        <polygon points="90,280 110,264 124,264 104,280"/>
+        <polygon points="130,280 150,264 164,264 144,280"/>
+        <polygon points="170,280 190,264 204,264 184,280"/>
+        <polygon points="210,280 230,264 244,264 224,280"/>
+        <polygon points="250,280 270,264 284,264 264,280"/>
+        <polygon points="290,280 310,264 324,264 304,280"/>
+        <polygon points="330,280 350,264 364,264 344,280"/>
+        <polygon points="370,280 390,264 404,264 384,280"/>
+        <polygon points="410,280 430,264 444,264 424,280"/>
+        <polygon points="450,280 470,264 484,264 464,280"/>
+      </g>
+    </g>
+  </g>
+</svg>

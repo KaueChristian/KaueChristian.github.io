@@ -1,0 +1,102 @@
+.contact {
+  position: relative;
+  background: var(--bg-dark);
+  padding-bottom: 40px;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: -220px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 440px;
+  background: radial-gradient(ellipse, color-mix(in srgb, var(--accent) 22%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.contact__inner {
+  position: relative;
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 88px;
+}
+.contact__inner .eyebrow {
+  display: inline-flex;
+  justify-content: center;
+}
+
+.contact__title {
+  font-size: clamp(2.3rem, 5.6vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  color: var(--text-light);
+  margin-bottom: 22px;
+}
+
+.contact__subtitle {
+  color: var(--text-muted-light);
+  font-size: 1.04rem;
+  line-height: 1.6;
+  max-width: 46ch;
+  margin: 0 auto 48px;
+}
+
+.contact__links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.contact__link {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 220px;
+  transition: transform var(--dur-2) var(--ease), background var(--dur-2) ease, border-color var(--dur-2) ease;
+}
+.contact__link:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: color-mix(in srgb, var(--accent-2) 55%, transparent);
+}
+
+.contact__link-label {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--accent-2);
+  font-weight: 500;
+}
+
+.contact__link-value {
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+.footer {
+  text-align: center;
+  padding: 24px 32px 32px;
+  color: var(--text-muted-light);
+  font-size: 0.84rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+@media (max-width: 760px) {
+  .contact__link {
+    min-width: 80%;
+  }
+}
