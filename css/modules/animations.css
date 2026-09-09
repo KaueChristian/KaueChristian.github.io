@@ -32,6 +32,48 @@
   50% { opacity: 1; }
 }
 
+/* Anel de pulso genérico — cor definida via --pulse-color no elemento */
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--pulse-color, var(--accent-2)) 55%, transparent); }
+  70% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--pulse-color, var(--accent-2)) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--pulse-color, var(--accent-2)) 0%, transparent); }
+}
+
+@keyframes badge-glow {
+  0%, 100% { box-shadow: var(--shadow-glow); }
+  50% { box-shadow: 0 0 22px -4px color-mix(in srgb, var(--accent) 62%, transparent); }
+}
+
+@keyframes fade-up-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes typewriter-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes blob-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(3%, -4%) scale(1.06); }
+}
+
+@keyframes dot-beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+}
+
 /* Revelação suave ao rolar a página */
 .reveal {
   opacity: 0;
@@ -52,4 +94,32 @@
   .about-profile__pulse { animation: none; }
   .project__thumb.is-denied .project__lock-badge { animation: none; }
   .project__denied { animation: none; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .about-code__content,
+  .about-telemetry__item,
+  .about-profile__chip,
+  .role,
+  .tech,
+  .timeline-chip {
+    clip-path: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .idcard {
+    transform: none !important;
+    transition: none !important;
+  }
+  .hero__glow,
+  .contact::before,
+  .company__badge,
+  .role__dot,
+  .contact__title .dot {
+    animation: none !important;
+  }
 }
