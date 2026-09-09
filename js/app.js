@@ -46,6 +46,9 @@
     watch: {
       projectFilter() {
         this.$nextTick(this.refreshReveal);
+      },
+      activeSection() {
+        this.$nextTick(this.updateNavIndicator);
       }
     },
 
@@ -76,6 +79,29 @@
         if (PortfolioTimeline) {
           PortfolioTimeline.updateTimelineScroll(this.$refs.centerTimeline);
         }
+        this.updateScrollProgress();
+      },
+
+      updateScrollProgress() {
+        const bar = document.querySelector('.scroll-progress');
+        if (!bar) return;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+        bar.style.transform = `scaleX(${pct})`;
+      },
+
+      updateNavIndicator() {
+        const container = this.$refs.navLinks;
+        const indicator = this.$refs.navIndicator;
+        if (!container || !indicator) return;
+        const active = container.querySelector('.nav__link.is-active');
+        if (!active) {
+          indicator.style.opacity = '0';
+          return;
+        }
+        indicator.style.opacity = '1';
+        indicator.style.width = `${active.offsetWidth}px`;
+        indicator.style.transform = `translateX(${active.offsetLeft}px)`;
       },
 
       setupReveal() {
@@ -108,16 +134,20 @@
         this.setupScrollSpy();
         if (PortfolioSpotlight) {
           PortfolioSpotlight.initSpotlight();
+          PortfolioSpotlight.initTilt();
         }
         if (PortfolioTimeline) {
           PortfolioTimeline.updateTimelineScroll(this.$refs.centerTimeline);
         }
+        this.updateNavIndicator();
+        window.addEventListener('resize', this.updateNavIndicator, { passive: true });
       });
     },
 
     unmounted() {
       window.removeEventListener('scroll', this.onScroll);
       window.removeEventListener('resize', this.onScroll);
+      window.removeEventListener('resize', this.updateNavIndicator);
       clearTimeout(this.deniedTimer);
       if (this.revealObserver) this.revealObserver.disconnect();
       if (this.scrollSpyObserver) this.scrollSpyObserver.disconnect();

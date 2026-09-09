@@ -48,19 +48,38 @@
   font-size: 0.9rem;
   letter-spacing: 0.02em;
   color: inherit;
-  transition: background var(--dur-2) ease;
+  transition: background var(--dur-2) ease, transform var(--dur-2) var(--ease-spring);
 }
 .nav__logo:hover {
   background: color-mix(in srgb, currentColor 10%, transparent);
+  transform: rotate(-6deg);
 }
 
 .nav__links {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 2px;
 }
 
+/* Indicador deslizante atrás do link ativo */
+.nav__indicator {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 0;
+  width: 0;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, currentColor 11%, transparent);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  transition: transform var(--dur-2) var(--ease), width var(--dur-2) var(--ease), opacity var(--dur-1) ease;
+}
+
 .nav__link {
+  position: relative;
+  z-index: 1;
   padding: 8px 15px;
   border-radius: var(--radius-sm);
   font-size: 0.9rem;
@@ -68,7 +87,7 @@
   color: inherit;
   opacity: 0.6;
   white-space: nowrap;
-  transition: opacity var(--dur-1) ease, background var(--dur-2) ease;
+  transition: opacity var(--dur-1) ease;
 }
 .nav__link:hover {
   opacity: 1;
@@ -76,7 +95,12 @@
 .nav__link.is-active {
   opacity: 1;
   font-weight: 600;
-  background: color-mix(in srgb, currentColor 11%, transparent);
+}
+
+@media (max-width: 900px) {
+  .nav__indicator {
+    display: none;
+  }
 }
 
 .nav__theme,
