@@ -81,14 +81,18 @@
     },
     {
       num: '03',
-      title: 'Agenda com Web Scraping',
-      desc: 'Sistema de agenda alimentado por um serviço de web scraping, que coleta e organiza dados automaticamente através de requisições HTTPS.',
-      tags: ['Python', 'Web Scraping', 'Requests'],
-      url: 'https://github.com/KaueChristian',
-      linkLabel: 'Ver projeto',
-      locked: true,
-      thumbClass: 'project__thumb--2',
-      glyph: projectGlyphs.calendar
+      title: 'StudySync',
+      desc: 'Agenda de estudos para Windows e web: sessões por matéria com lembrete em tempo real, timer de foco (Pomodoro), busca de conteúdo de apoio em fontes confiáveis e anotações em Markdown.',
+      tags: ['Python', 'FastAPI', 'React', 'SQLite', 'WebSocket'],
+      url: 'https://github.com/KaueChristian/StudySync',
+      linkLabel: 'Ver no GitHub',
+      locked: false,
+      thumbClass: 'project__thumb--6',
+      glyph: '',
+      glow: true,
+      accent: '#3A6334',
+      accent2: '#98BB90',
+      accent3: '#C9A45C'
     },
     {
       num: '04',
