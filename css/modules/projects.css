@@ -125,6 +125,10 @@
   margin-left: auto;
   transition: transform var(--dur-3) var(--ease);
 }
+/* Miniatura clara (papel do StudySync): número em tinta, não em branco. */
+.project__thumb--6 .project__num {
+  color: rgba(43, 36, 32, 0.28);
+}
 .project:hover .project__num {
   transform: translate(-4px, -4px);
 }
@@ -141,10 +145,10 @@
 }
 
 .project__thumb--1 { background: #0b0f17 url("../../assets/goportunitties-thumb.svg?v=2") center / cover no-repeat; }
-.project__thumb--2 { background: linear-gradient(135deg, #2bd4b2, #16897a); }
 .project__thumb--3 { background: linear-gradient(135deg, #ef6ea8, #a83b70); }
 .project__thumb--4 { background: linear-gradient(135deg, #f0925f, #b8582f); }
 .project__thumb--5 { background: #0b0b0c url("../../assets/urlcraft-thumb.svg?v=2") center / cover no-repeat; }
+.project__thumb--6 { background: #f6f1e6 url("../../assets/studysync-thumb.svg?v=1") center / cover no-repeat; }
 
 .project__body {
   position: relative;

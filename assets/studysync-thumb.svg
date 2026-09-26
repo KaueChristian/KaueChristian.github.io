@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" role="img" aria-label="StudySync — agenda de estudos com timer de foco e busca de conteúdo">
+  <defs>
+    <pattern id="pauta" width="480" height="14" patternUnits="userSpaceOnUse">
+      <rect width="480" height="14" fill="#f6f1e6"/>
+      <line x1="0" y1="13.5" x2="480" y2="13.5" stroke="#e7dcc6" stroke-width="1"/>
+    </pattern>
+    <clipPath id="faixa"><rect x="0" y="264" width="480" height="16"/></clipPath>
+  </defs>
+
+  <!-- Papel pautado, como o fundo do próprio app -->
+  <rect width="480" height="280" fill="url(#pauta)"/>
+  <line x1="18" y1="0" x2="18" y2="264" stroke="#e4b8a8" stroke-width="1"/>
+
+  <!-- Marca: o monograma "S" no bloco verde-tinta -->
+  <g transform="translate(32,22)">
+    <rect width="28" height="28" rx="1.5" fill="#3a6334"/>
+    <path transform="scale(0.875)" d="M24 4H13A7 7 0 0 0 13 18H22V24H8V28H26V14H13A3 3 0 0 1 13 8H24Z" fill="#fffdf8"/>
+  </g>
+  <text x="68" y="41" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="17" fill="#2b2420">StudySync</text>
+
+  <g transform="translate(346,26)">
+    <rect width="104" height="20" rx="2" fill="#fffdf8" stroke="#cbb98f"/>
+    <circle cx="12" cy="10" r="3" fill="#4f7d47"/>
+    <text x="21" y="14" font-family="Segoe UI, Arial, sans-serif" font-weight="700" font-size="9" fill="#2e4f2a">v1.1 · WINDOWS</text>
+  </g>
+
+  <!-- Chamada -->
+  <text x="32" y="90" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="23" fill="#2b2420">Agende a sessão e estude</text>
+  <rect x="31" y="100" width="110" height="28" rx="2" fill="#dfeade" stroke="#98bb90"/>
+  <text x="86" y="120" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="21" fill="#2e4f2a">com foco</text>
+  <text x="148" y="120" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="23" fill="#2b2420">no que importa</text>
+  <text x="32" y="144" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#6b5c47">Agenda · timer Pomodoro · busca de conteúdo · notas em Markdown</text>
+
+  <!-- Card 1: sessão agendada -->
+  <g transform="translate(32,160)">
+    <rect width="160" height="80" rx="3" fill="#fffdf8" stroke="#e2d6bd"/>
+    <rect width="3" height="80" fill="#22c55e"/>
+    <text x="14" y="22" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="11.5" fill="#2b2420">Revisão de Biologia</text>
+    <text x="14" y="38" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#6b5c47">ciclo de Krebs</text>
+    <rect x="14" y="48" width="44" height="14" rx="1.5" fill="#dcfce7"/>
+    <text x="36" y="58" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-weight="700" font-size="7.5" fill="#15803d">Biologia</text>
+    <text x="64" y="58" font-family="Segoe UI, Arial, sans-serif" font-size="8.5" fill="#6b5c47">15:00 – 16:30</text>
+    <text x="14" y="74" font-family="Segoe UI, Arial, sans-serif" font-weight="700" font-size="8" fill="#3a6334">lembrete 15 min antes</text>
+  </g>
+
+  <!-- Card 2: timer de foco -->
+  <g transform="translate(204,160)">
+    <rect width="104" height="80" rx="3" fill="#fffdf8" stroke="#e2d6bd"/>
+    <circle cx="52" cy="35" r="25" fill="none" stroke="#e7dcc6" stroke-width="5"/>
+    <path d="M52 10A25 25 0 1 1 27.1 37.6" fill="none" stroke="#3a6334" stroke-width="5"/>
+    <text x="52" y="39" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="11.5" fill="#2b2420">18:42</text>
+    <text x="52" y="72" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="8.5" fill="#6b5c47">Foco · Ciclo 2</text>
+  </g>
+
+  <!-- Card 3: links de apoio -->
+  <g transform="translate(320,160)">
+    <rect width="130" height="80" rx="3" fill="#fffdf8" stroke="#e2d6bd"/>
+    <text x="12" y="20" font-family="Segoe UI, Arial, sans-serif" font-weight="700" font-size="9.5" fill="#2b2420">5 links de apoio</text>
+    <g font-family="Segoe UI, Arial, sans-serif" font-size="8">
+      <rect x="12" y="28" width="64" height="12" rx="1.5" fill="#efe7d6"/>
+      <text x="17" y="37" fill="#6b5c47">todamateria</text>
+      <rect x="80" y="28" width="38" height="12" rx="1.5" fill="#d1fae5"/>
+      <text x="84" y="37" font-weight="700" fill="#047857">Alta</text>
+      <rect x="12" y="44" width="72" height="12" rx="1.5" fill="#efe7d6"/>
+      <text x="17" y="53" fill="#6b5c47">brasilescola</text>
+      <rect x="12" y="60" width="66" height="12" rx="1.5" fill="#efe7d6"/>
+      <text x="17" y="69" fill="#6b5c47">khanacademy</text>
+    </g>
+  </g>
+
+  <!-- Faixa listrada no rodapé, como nos outros projetos -->
+  <g clip-path="url(#faixa)">
+    <rect x="0" y="264" width="480" height="16" fill="#3a6334"/>
+    <g fill="#98bb90">
+      <polygon points="0,280 20,264 34,264 14,280"/><polygon points="40,280 60,264 74,264 54,280"/>
+      <polygon points="80,280 100,264 114,264 94,280"/><polygon points="120,280 140,264 154,264 134,280"/>
+      <polygon points="160,280 180,264 194,264 174,280"/><polygon points="200,280 220,264 234,264 214,280"/>
+      <polygon points="240,280 260,264 274,264 254,280"/><polygon points="280,280 300,264 314,264 294,280"/>
+      <polygon points="320,280 340,264 354,264 334,280"/><polygon points="360,280 380,264 394,264 374,280"/>
+      <polygon points="400,280 420,264 434,264 414,280"/><polygon points="440,280 460,264 474,264 454,280"/>
+    </g>
+    <g fill="#fffdf8">
+      <polygon points="10,280 30,264 44,264 24,280"/><polygon points="50,280 70,264 84,264 64,280"/>
+      <polygon points="90,280 110,264 124,264 104,280"/><polygon points="130,280 150,264 164,264 144,280"/>
+      <polygon points="170,280 190,264 204,264 184,280"/><polygon points="210,280 230,264 244,264 224,280"/>
+      <polygon points="250,280 270,264 284,264 264,280"/><polygon points="290,280 310,264 324,264 304,280"/>
+      <polygon points="330,280 350,264 364,264 344,280"/><polygon points="370,280 390,264 404,264 384,280"/>
+      <polygon points="410,280 430,264 444,264 424,280"/><polygon points="450,280 470,264 484,264 464,280"/>
+    </g>
+  </g>
+</svg>
