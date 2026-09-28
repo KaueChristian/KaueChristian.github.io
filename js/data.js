@@ -2,60 +2,56 @@
   'use strict';
 
   const { icons, projectGlyphs } = global.PORTFOLIO_ICONS || { icons: {}, projectGlyphs: {} };
+  const locales = global.PORTFOLIO_I18N || {};
 
+  const DEFAULT_LANG = 'pt';
+
+  const person = {
+    name: 'Kauê Christian',
+    email: 'kauefirmo410@gmail.com',
+    github: { url: 'https://github.com/KaueChristian', label: 'github.com/KaueChristian' },
+    linkedin: {
+      url: 'https://www.linkedin.com/in/kau%C3%AA-firmo-593b9b322/',
+      label: 'linkedin.com/in/kauê-firmo'
+    },
+    site: { url: 'https://kauechristian.github.io', label: 'kauechristian.github.io' }
+  };
+
+  // Idiomas exibidos no card de identidade do hero.
   const frameworks = [
     { name: 'Vue.js', color: '#41B883', icon: icons.vue },
     { name: 'React', color: '#61DAFB', icon: icons.react },
-    { name: 'Django', color: '#44B78B', icon: icons.django },
-    { name: 'Flask', color: '#E2E8F0', icon: icons.flask }
+    { name: 'Golang', color: '#00ADD8', icon: icons.golang },
+    { name: 'Python', color: '#3776AB', icon: icons.python },
+    { name: 'TypeScript', color: '#3178C6', icon: icons.typescript }
   ];
 
-  const experience = [
+  const profileChips = ['Python', 'Golang', 'Vue.js', 'React', 'TypeScript', 'SQL'];
+
+  // Datas no formato AAAA-MM; `end: null` significa "em andamento". Durações e períodos
+  // são calculados a partir delas, então nunca ficam defasados em relação ao calendário.
+  const companies = [
     {
+      id: 'tron',
       name: 'Tron Sistemas',
       short: 'tron',
       color: '#14532D',
-      duration: '1 ano e 6 meses',
-      location: 'Goiânia — GO',
       current: true,
       glow: true,
       roles: [
-        {
-          title: 'Desenvolvedor Júnior II',
-          type: 'Tempo integral',
-          period: 'jul de 2026 — o momento',
-          duration: '2 meses',
-          place: 'Goiânia e Região · Híbrido',
-          desc: 'Desenvolvimento e evolução de módulos do sistema, atuando do banco de dados à interface e apoiando decisões técnicas do time.'
-        },
-        {
-          title: 'Desenvolvedor Júnior',
-          type: 'Temporário',
-          period: 'fev de 2026 — jul de 2026',
-          duration: '7 meses',
-          place: 'Goiás, Brasil · Híbrido',
-          desc: 'Implementação de novas funcionalidades e correção de defeitos em aplicações já em produção, com foco em estabilidade e qualidade de código.'
-        },
-        {
-          title: 'Estagiário',
-          type: 'Estágio',
-          period: 'mar de 2025 — fev de 2026',
-          duration: '1 ano',
-          place: 'Goiânia, Goiás, Brasil',
-          desc: 'Manutenção de sistemas legado e tratamento de erros, atuando na estabilidade e na continuidade de aplicações em produção.'
-        }
+        { id: 'jr2', start: '2026-07', end: null },
+        { id: 'jr', start: '2026-02', end: '2026-07' },
+        { id: 'intern', start: '2025-03', end: '2026-02' }
       ]
     }
   ];
 
   const projects = [
     {
+      id: 'goportunitties',
       num: '01',
-      title: 'Goportunitties',
-      desc: 'Painel completo e API REST em Go (Gin + GORM + SQLite) com interface web em React para busca, publicação e métricas de vagas tech em tempo real.',
       tags: ['Golang', 'React', 'TypeScript', 'SQLite', 'API REST'],
       url: 'https://github.com/KaueChristian/Goportunitties',
-      linkLabel: 'Ver no GitHub',
       locked: false,
       thumbClass: 'project__thumb--1',
       glyph: '',
@@ -65,12 +61,10 @@
       accent3: '#9085E9'
     },
     {
+      id: 'urlcraft',
       num: '02',
-      title: 'Encurtador de URL',
-      desc: 'Encurtador de links com API em Flask e interface em Vue.js, incluindo tratamento e validação das URLs recebidas.',
       tags: ['Flask', 'Vue.js', 'Python'],
       url: 'https://urlcraft-fv59.onrender.com',
-      linkLabel: 'Ver site',
       locked: false,
       thumbClass: 'project__thumb--5',
       glyph: '',
@@ -80,12 +74,10 @@
       accent3: '#F0327A'
     },
     {
+      id: 'studysync',
       num: '03',
-      title: 'StudySync',
-      desc: 'Agenda de estudos para Windows e web: sessões por matéria com lembrete em tempo real, timer de foco (Pomodoro), busca de conteúdo de apoio em fontes confiáveis e anotações em Markdown.',
       tags: ['Python', 'FastAPI', 'React', 'SQLite', 'WebSocket'],
       url: 'https://github.com/KaueChristian/StudySync',
-      linkLabel: 'Ver no GitHub',
       locked: false,
       thumbClass: 'project__thumb--6',
       glyph: '',
@@ -95,126 +87,78 @@
       accent3: '#C9A45C'
     },
     {
+      id: 'estoque',
       num: '04',
-      title: 'Gerenciador de Estoque',
-      desc: 'Software desktop para controle de estoque, com back-end em Python e SQLite e interface gráfica construída em Tkinter.',
       tags: ['Python', 'SQLite', 'Tkinter'],
       url: 'https://github.com/KaueChristian',
-      linkLabel: 'Ver projeto',
       locked: true,
       thumbClass: 'project__thumb--3',
       glyph: projectGlyphs.box
     },
     {
+      id: 'bot',
       num: '05',
-      title: 'Bot de Rede Social',
-      desc: 'Automação de tarefas repetitivas em redes sociais usando Selenium, incluindo o envio programado de mensagens.',
       tags: ['Python', 'Selenium', 'Automação'],
       url: 'https://github.com/KaueChristian',
-      linkLabel: 'Ver projeto',
       locked: true,
       thumbClass: 'project__thumb--4',
       glyph: projectGlyphs.bot
     }
   ];
 
-  const services = [
-    {
-      title: 'Desenvolvimento Full Stack',
-      desc: 'Do modelo de dados à interface: back-end em Python com Django e Flask, front-end em Vue e React.',
-      icon: icons.svcStack
-    },
-    {
-      title: 'Manutenção & Evolução',
-      desc: 'Atuação em bases legado — tratamento de erros, correção de defeitos e estabilidade de aplicações já em produção.',
-      icon: icons.svcMaintain
-    },
-    {
-      title: 'APIs & Integrações',
-      desc: 'Construção e consumo de APIs REST, integrando serviços e mantendo contratos claros entre as pontas.',
-      icon: icons.svcApi
-    },
-    {
-      title: 'Automação & Scraping',
-      desc: 'Coleta de dados e automação de tarefas repetitivas, transformando trabalho manual em rotina programada.',
-      icon: icons.svcAuto
-    }
-  ];
-
-  const now = [
-    { label: 'Trabalhando', value: 'Desenvolvedor Júnior II na Tron Sistemas' },
-    { label: 'Estudando', value: 'Engenharia de Software na Unigoiás — conclusão em 2026' },
-    { label: 'Aprofundando', value: 'Golang, Django e arquitetura de APIs REST' }
-  ];
-
+  // `label` aponta para `t.labels`; `name` é um nome próprio de tecnologia, igual em todos os idiomas.
   const pillars = [
     {
       num: '01',
-      title: 'Full Stack de Ponta a Ponta',
-      subtitle: 'Da modelagem relacional à experiência do usuário',
-      desc: 'Domínio completo do ciclo de software: arquitetura de dados consistente no PostgreSQL e MySQL, regras de negócio robustas no back-end com Python (Django e Flask) e interfaces modernas, ágeis e intuitivas com Vue.js e TypeScript.',
       icon: icons.pillarStack,
       color: 'var(--accent)',
       tags: [
         { name: 'Python', icon: icons.python },
         { name: 'Vue.js', icon: icons.vue },
-        { name: 'Django', icon: icons.django },
-        { name: 'PostgreSQL', icon: icons.postgres },
-        { name: 'TypeScript', icon: icons.typescript }
+        { name: 'React', icon: icons.react },
+        { name: 'TypeScript', icon: icons.typescript },
+        { name: 'SQLite', icon: icons.sqlite }
       ]
     },
     {
       num: '02',
-      title: 'Arquitetura Escalável & Performance',
-      subtitle: 'Sistemas estruturados para crescer com estabilidade',
-      desc: 'Construção de APIs REST de alto rendimento em Golang e Python. Arquitetura orientada a serviços e camadas desacopladas, otimização de consultas SQL e foco estrito em tempo de resposta e concorrência sob alta carga.',
       icon: icons.pillarScale,
       color: 'var(--accent-2)',
       tags: [
         { name: 'Golang', icon: icons.golang },
-        { name: 'API REST', icon: icons.api },
-        { name: 'MySQL', icon: icons.mysql },
+        { label: 'restApi', icon: icons.api },
+        { label: 'webSocket', icon: icons.api },
         { name: 'Docker', icon: icons.docker }
       ]
     },
     {
       num: '03',
-      title: 'Código Limpo & Eficiência Técnica',
-      subtitle: 'Legibilidade, manutenibilidade e padrões sólidos',
-      desc: 'Prática contínua de Clean Architecture e princípios SOLID, componentização modular, tipagem estrita e refatoração preventiva. Código estruturado para ser legível por outros desenvolvedores e facilmente escalável no longo prazo.',
       icon: icons.pillarClean,
       color: 'var(--accent-3)',
       tags: [
         { name: 'Clean Code', icon: icons.catCode },
         { name: 'TypeScript', icon: icons.typescript },
-        { name: 'Java', icon: icons.java },
-        { name: 'Delphi', icon: icons.delphi }
+        { label: 'testing', icon: icons.catTools },
+        { name: 'Git', icon: icons.git }
       ]
     },
     {
       num: '04',
-      title: 'Resiliência & Estabilidade em Produção',
-      subtitle: 'Sistemas que precisam funcionar todos os dias',
-      desc: 'Experiência prática na Tron Sistemas mantendo sistemas corporativos de missão crítica em operação diária. Tratamento preventivo de exceções, auditoria de dados, mitigação de bugs em bases legadas e garantia de confiabilidade operacional.',
       icon: icons.pillarShield,
       color: 'var(--accent-4)',
       tags: [
-        { name: 'Sistemas Críticos', icon: icons.svcMaintain },
-        { name: 'Tratamento de Erros', icon: icons.api },
-        { name: 'Firebird', icon: icons.firebird },
-        { name: 'SQLite', icon: icons.sqlite }
+        { label: 'productionSystems', icon: icons.svcMaintain },
+        { label: 'errorHandling', icon: icons.api },
+        { name: 'SQL', icon: icons.catDb }
       ]
     },
     {
       num: '05',
-      title: 'Automação & Integrações Avançadas',
-      subtitle: 'Eliminação de tarefas manuais e rotinas inteligentes',
-      desc: 'Desenvolvimento de robôs e automações com Selenium e Python para substituir tarefas manuais por rotinas programadas, web scraping avançado para mineração de dados estruturados e integração confiável de APIs e webhooks.',
       icon: icons.pillarAuto,
       color: 'var(--accent-5)',
       tags: [
         { name: 'Selenium', icon: icons.selenium },
-        { name: 'Web Scraping', icon: icons.svcAuto },
+        { label: 'webScraping', icon: icons.svcAuto },
         { name: 'Git & CI', icon: icons.git }
       ]
     }
@@ -222,7 +166,7 @@
 
   const skillGroups = [
     {
-      title: 'Linguagens Core',
+      id: 'languages',
       icon: icons.catCode,
       items: [
         { name: 'Python', color: '#3776AB', icon: icons.python },
@@ -234,7 +178,7 @@
       ]
     },
     {
-      title: 'Frontend',
+      id: 'frontend',
       icon: icons.catFront,
       items: [
         { name: 'Vue.js', color: '#41B883', icon: icons.vue },
@@ -245,7 +189,7 @@
       ]
     },
     {
-      title: 'Backend',
+      id: 'backend',
       icon: icons.catBack,
       items: [
         { name: 'Django', color: '#44B78B', icon: icons.django },
@@ -254,7 +198,7 @@
       ]
     },
     {
-      title: 'Banco de Dados',
+      id: 'databases',
       icon: icons.catDb,
       items: [
         { name: 'PostgreSQL', color: '#5B93C4', icon: icons.postgres },
@@ -264,7 +208,7 @@
       ]
     },
     {
-      title: 'Ferramentas',
+      id: 'tools',
       icon: icons.catTools,
       wide: true,
       items: [
@@ -306,25 +250,126 @@
   });
 
   const navItems = [
-    { id: 'top', label: 'Início' },
-    { id: 'sobre', label: 'Sobre' },
-    { id: 'experiencia', label: 'Experiência' },
-    { id: 'projetos', label: 'Projetos' },
-    { id: 'habilidades', label: 'Habilidades' },
-    { id: 'educacao', label: 'Educação' },
-    { id: 'contato', label: 'Contato' }
+    { id: 'top', key: 'home' },
+    { id: 'sobre', key: 'about' },
+    { id: 'experiencia', key: 'experience' },
+    { id: 'projetos', key: 'projects' },
+    { id: 'habilidades', key: 'skills' },
+    { id: 'educacao', key: 'education' },
+    { id: 'contato', key: 'contact' }
   ];
 
+  // ---- Datas e durações ----------------------------------------------------
+
+  function parseMonth(value) {
+    const [year, month] = value.split('-').map(Number);
+    return { year, month: month - 1 };
+  }
+
+  // Contagem inclusiva (mês inicial e final entram), no mesmo critério do LinkedIn.
+  function monthSpan(start, end) {
+    const from = parseMonth(start);
+    const now = new Date();
+    const to = end ? parseMonth(end) : { year: now.getFullYear(), month: now.getMonth() };
+    return (to.year - from.year) * 12 + (to.month - from.month) + 1;
+  }
+
+  function plural(count, forms) {
+    return `${count} ${count === 1 ? forms[0] : forms[1]}`;
+  }
+
+  function formatDuration(months, dates) {
+    const years = Math.floor(months / 12);
+    const rest = months % 12;
+    if (!years) return plural(rest, dates.month);
+    if (!rest) return plural(years, dates.year);
+    return plural(years, dates.year) + dates.and + plural(rest, dates.month);
+  }
+
+  function formatMonth(value, dates) {
+    const { year, month } = parseMonth(value);
+    return dates.months[month] + dates.joiner + year;
+  }
+
+  function formatPeriod(start, end, dates) {
+    return `${formatMonth(start, dates)} — ${end ? formatMonth(end, dates) : dates.present}`;
+  }
+
+  function formatExperienceStat(months, dates) {
+    const years = Math.floor(months / 12);
+    return years ? `${years}+ ${years === 1 ? dates.year[0] : dates.year[1]}` : plural(months, dates.month);
+  }
+
+  // ---- Montagem por idioma -------------------------------------------------
+
+  function build(lang) {
+    const t = locales[lang];
+    const dates = t.dates;
+
+    const experience = companies.map((company) => {
+      const copy = t.experience.companies[company.id];
+      const earliest = company.roles.reduce((min, role) => (role.start < min ? role.start : min), company.roles[0].start);
+      return {
+        id: company.id,
+        name: company.name,
+        short: company.short,
+        color: company.color,
+        current: company.current,
+        glow: company.glow,
+        location: copy.location,
+        duration: formatDuration(monthSpan(earliest, null), dates),
+        roles: company.roles.map((role) => ({
+          id: role.id,
+          ...copy.roles[role.id],
+          period: formatPeriod(role.start, role.end, dates),
+          duration: formatDuration(monthSpan(role.start, role.end), dates)
+        }))
+      };
+    });
+
+    const earliestStart = companies
+      .flatMap((company) => company.roles)
+      .reduce((min, role) => (role.start < min ? role.start : min), '9999-12');
+
+    return {
+      lang,
+      t,
+      person,
+      frameworks,
+      profileChips,
+      lockIcon: icons.lock,
+      stats: {
+        experience: formatExperienceStat(monthSpan(earliestStart, null), dates),
+        projects: String(projects.length)
+      },
+      navItems: navItems.map((item) => ({ id: item.id, label: t.nav[item.key] })),
+      experience,
+      projects: projects.map((project) => {
+        const copy = t.projects.items[project.id];
+        return {
+          ...project,
+          ...copy,
+          tags: project.tags.map((tag) => t.projects.tagLabels[tag] || tag)
+        };
+      }),
+      skillGroups: skillGroups.map((group) => ({ ...group, title: t.skills.groups[group.id] })),
+      pillars: pillars.map((pillar, i) => ({
+        ...pillar,
+        ...t.pillars[i],
+        tags: pillar.tags.map((tag) => ({ name: tag.label ? t.labels[tag.label] : tag.name, icon: tag.icon }))
+      })),
+      now: t.now.items,
+      seeking: t.seeking.items
+    };
+  }
+
+  function get(lang) {
+    return build(locales[lang] ? lang : DEFAULT_LANG);
+  }
+
   global.PORTFOLIO_DATA = {
-    age: 21,
-    navItems,
-    frameworks,
-    experience,
-    projects,
-    skillGroups,
-    services,
-    now,
-    pillars,
-    lockIcon: icons.lock
+    languages: Object.keys(locales),
+    defaultLang: DEFAULT_LANG,
+    get
   };
 })(window);

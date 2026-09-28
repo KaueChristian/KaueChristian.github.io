@@ -68,6 +68,12 @@
   min-width: 220px;
   transition: transform var(--dur-2) var(--ease), background var(--dur-2) ease, border-color var(--dur-2) ease;
 }
+.contact__link--cv {
+  font: inherit;
+  color: inherit;
+  text-align: center;
+  cursor: pointer;
+}
 .contact__link:hover {
   transform: translateY(-3px);
   background: rgba(255, 255, 255, 0.08);
@@ -84,14 +90,19 @@
 }
 
 .contact__link-value {
+  position: relative;
+  align-self: center;
+  max-width: 100%;
   color: #fff;
   font-weight: 500;
   font-size: 1rem;
   word-break: break-word;
 }
+/* A seta fica fora do fluxo: se ocupasse espaço, o texto visível ficaria deslocado do centro. */
 .contact__link-value::after {
   content: '→';
-  display: inline-block;
+  position: absolute;
+  left: 100%;
   margin-left: 6px;
   opacity: 0;
   transform: translateX(-4px);
