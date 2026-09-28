@@ -47,16 +47,18 @@
 }
 
 .projects__grid {
+  position: relative; /* referência dos cards que saem via TransitionGroup */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 24px;
 }
-.projects__grid .project:nth-child(1) { transition-delay: 0s; }
-.projects__grid .project:nth-child(2) { transition-delay: 0.06s; }
-.projects__grid .project:nth-child(3) { transition-delay: 0.12s; }
-.projects__grid .project:nth-child(4) { transition-delay: 0.18s; }
-.projects__grid .project:nth-child(5) { transition-delay: 0.24s; }
-.projects__grid .project:nth-child(6) { transition-delay: 0.3s; }
+/* Cascata do reveal: o atraso só entra nas propriedades do reveal (opacity/transform).
+   O hover usa `translate`, então entra e sai sem herdar esse atraso. */
+.projects__grid .project:nth-child(2) { --reveal-delay: 0.06s; }
+.projects__grid .project:nth-child(3) { --reveal-delay: 0.12s; }
+.projects__grid .project:nth-child(4) { --reveal-delay: 0.18s; }
+.projects__grid .project:nth-child(5) { --reveal-delay: 0.24s; }
+.projects__grid .project:nth-child(6) { --reveal-delay: 0.3s; }
 
 .project {
   display: flex;
@@ -65,7 +67,13 @@
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--border-soft-2);
-  transition: transform var(--dur-3) var(--ease), box-shadow var(--dur-3) var(--ease), border-color var(--dur-3) ease, background-color var(--dur-3) ease;
+  transition:
+    opacity var(--dur-3) var(--ease) var(--reveal-delay, 0s),
+    transform var(--dur-3) var(--ease) var(--reveal-delay, 0s),
+    translate var(--dur-3) var(--ease),
+    box-shadow var(--dur-3) var(--ease),
+    border-color var(--dur-3) ease,
+    background-color var(--dur-3) ease;
 }
 
 .project--glow {
@@ -84,7 +92,7 @@
 }
 
 .project:hover {
-  transform: translateY(-4px);
+  translate: 0 -4px;
   box-shadow: var(--shadow-lg);
 }
 .project--glow:hover {
@@ -206,7 +214,7 @@
   cursor: not-allowed;
 }
 .project--locked:hover {
-  transform: none;
+  translate: none;
   box-shadow: none;
 }
 .project--locked .project__title,
@@ -316,6 +324,25 @@
   color: var(--text-muted);
   font-size: 0.92rem;
   margin-bottom: 18px;
+}
+
+/* Troca de filtro (TransitionGroup "project-grid"): fade + leve scale na entrada/saída,
+   e os vizinhos deslizam (FLIP) para as novas posições. Os seletores levam `.project`
+   para vencer o `.reveal.in-view` de animations.css. */
+.project.project-grid-enter-active,
+.project.project-grid-leave-active,
+.project.project-grid-move {
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+}
+.project.project-grid-enter-from,
+.project.project-grid-leave-to {
+  opacity: 0;
+  transform: scale(0.96);
+}
+/* Fora do fluxo enquanto some; posição/tamanho congelados via JS (onProjectBeforeLeave). */
+.project.project-grid-leave-active {
+  position: absolute;
+  pointer-events: none;
 }
 
 @media (max-width: 760px) {

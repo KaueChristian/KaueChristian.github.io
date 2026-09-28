@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=38">
+<link rel="stylesheet" href="css/style.css?v=39">
 </head>
 <body>
 
@@ -397,7 +397,15 @@
           >Concluídos <span class="filter__count">{{ doneProjects.length }}</span></button>
         </div>
 
-        <div class="projects__grid" v-cloak>
+        <!-- Template in-DOM: o HTML força minúsculas, então <TransitionGroup> precisa ser escrito em kebab-case -->
+        <transition-group
+          name="project-grid"
+          tag="div"
+          class="projects__grid"
+          v-cloak
+          @before-enter="onProjectBeforeEnter"
+          @before-leave="onProjectBeforeLeave"
+        >
           <article
             class="project reveal"
             :class="[project.locked ? 'project--locked' : '', { 'project--glow': project.glow }]"
@@ -450,7 +458,7 @@
             </div>
           </article>
 
-          <article class="project project--cta reveal">
+          <article class="project project--cta reveal" key="github-cta">
             <div class="project__cta-body">
               <span class="project__cta-eyebrow">E tem mais</span>
               <h3>Confira meu GitHub</h3>
@@ -458,7 +466,7 @@
               <a href="https://github.com/KaueChristian" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Ver GitHub</a>
             </div>
           </article>
-        </div>
+        </transition-group>
       </div>
     </section>
 
@@ -587,10 +595,10 @@
 <script src="js/data/icons.js?v=1"></script>
 <script src="js/data.js?v=18"></script>
 <script src="js/modules/theme.js?v=1"></script>
-<script src="js/modules/timeline.js?v=1"></script>
+<script src="js/modules/timeline.js?v=2"></script>
 <script src="js/modules/reveal.js?v=1"></script>
 <script src="js/modules/scroll-spy.js?v=1"></script>
-<script src="js/modules/spotlight.js?v=2"></script>
-<script src="js/app.js?v=6"></script>
+<script src="js/modules/spotlight.js?v=3"></script>
+<script src="js/app.js?v=7"></script>
 </body>
 </html>

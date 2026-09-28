@@ -10,19 +10,30 @@
   }
 
   function initSpotlight() {
-    // Rastreia a posição do cursor em tempo real nos blocos com vidro líquido
-    document.addEventListener('pointermove', (e) => {
-      const card = e.target.closest ? e.target.closest('.glass-panel') : null;
-      if (card) {
-        updateCardSpotlight(card, e.clientX, e.clientY);
-      }
-    }, { passive: true });
+    // Sem cursor (touch) não há holofote para acompanhar
+    if (!window.matchMedia('(hover: hover)').matches) return;
 
-    document.addEventListener('mousemove', (e) => {
-      const card = e.target.closest ? e.target.closest('.glass-panel') : null;
+    // Rastreia a posição do cursor nos blocos com vidro líquido. O evento só guarda o último
+    // ponto; a busca do card e a escrita das variáveis rodam no máximo uma vez por frame,
+    // mesmo com mouses de 500/1000 Hz.
+    let frame = 0;
+    let target = null;
+    let clientX = 0;
+    let clientY = 0;
+
+    const flush = () => {
+      frame = 0;
+      const card = target.closest ? target.closest('.glass-panel') : null;
       if (card) {
-        updateCardSpotlight(card, e.clientX, e.clientY);
+        updateCardSpotlight(card, clientX, clientY);
       }
+    };
+
+    document.addEventListener('pointermove', (e) => {
+      target = e.target;
+      clientX = e.clientX;
+      clientY = e.clientY;
+      if (!frame) frame = requestAnimationFrame(flush);
     }, { passive: true });
   }
 
