@@ -110,6 +110,13 @@
     clip-path: none !important;
     opacity: 1 !important;
     transform: none !important;
+    translate: none !important;
+  }
+  /* Cards da timeline visíveis sem depender da ativação via JS. Seletor reforçado para
+     vencer os !important do breakpoint mobile de about.css, que é carregado depois. */
+  .center-timeline .timeline-node .timeline-card {
+    opacity: 1 !important;
+    transform: none !important;
   }
   .idcard {
     transform: none !important;

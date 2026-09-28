@@ -9,11 +9,11 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
-.skills__grid .skillcard:nth-child(1) { transition-delay: 0s; }
-.skills__grid .skillcard:nth-child(2) { transition-delay: 0.08s; }
-.skills__grid .skillcard:nth-child(3) { transition-delay: 0.16s; }
-.skills__grid .skillcard:nth-child(4) { transition-delay: 0.24s; }
-.skills__grid .skillcard:nth-child(5) { transition-delay: 0.32s; }
+/* Cascata do reveal: atraso restrito a opacity/transform; o hover usa `translate` sem atraso. */
+.skills__grid .skillcard:nth-child(2) { --reveal-delay: 0.08s; }
+.skills__grid .skillcard:nth-child(3) { --reveal-delay: 0.16s; }
+.skills__grid .skillcard:nth-child(4) { --reveal-delay: 0.24s; }
+.skills__grid .skillcard:nth-child(5) { --reveal-delay: 0.32s; }
 
 .skillcard {
   position: relative;
@@ -23,10 +23,15 @@
   background: linear-gradient(180deg, var(--card-bg), color-mix(in srgb, var(--card-bg) 90%, var(--card-bg-2) 10%));
   border: 1px solid var(--border-strong);
   box-shadow: var(--shadow-sm), inset 0 1px 0 color-mix(in srgb, var(--text-light) 6%, transparent);
-  transition: border-color var(--dur-2) ease, box-shadow var(--dur-2) ease, transform var(--dur-2) var(--ease);
+  transition:
+    opacity var(--dur-2) var(--ease) var(--reveal-delay, 0s),
+    transform var(--dur-2) var(--ease) var(--reveal-delay, 0s),
+    translate var(--dur-2) var(--ease),
+    border-color var(--dur-2) ease,
+    box-shadow var(--dur-2) ease;
 }
 .skillcard:hover {
-  transform: translateY(-3px);
+  translate: 0 -3px;
   border-color: color-mix(in srgb, var(--text-muted) 30%, var(--border-strong));
   box-shadow: var(--shadow-lg), inset 0 1px 0 color-mix(in srgb, var(--text-light) 6%, transparent);
 }
