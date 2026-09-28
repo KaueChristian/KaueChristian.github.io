@@ -8,8 +8,14 @@ trajetória, stack e projetos.
 ## Destaques técnicos
 
 - **Vue 3 sem bundler**, usando o build global via CDN e template no próprio HTML:
-  as listas (experiência, projetos e habilidades) são renderizadas a partir de
-  `js/data.js`, então editar conteúdo não exige mexer em marcação
+  todo o texto e as listas (experiência, projetos e habilidades) vêm de `js/data.js`
+  e dos dicionários em `js/i18n/`, então editar conteúdo não exige mexer em marcação
+- **Português e inglês**: o idioma segue o do navegador (primeiro `pt` ou `en` da lista
+  de preferências; qualquer outro cai em inglês), com botão **PT/EN** para trocar
+  manualmente e `?lang=en` / `?lang=pt` para links diretos
+- **Visualizador de currículo**: o botão *Ver CV* abre uma janela flutuante com o
+  CV no idioma atual e um botão para baixar o PDF. O CV é montado pelos mesmos dados do
+  site (`cv.html`), então nunca fica desalinhado do portfólio
 - **Tema claro/escuro** com persistência em `localStorage`, respeitando a preferência
   do sistema (`prefers-color-scheme`) e sem flash de tema errado no carregamento
 - **Navbar em pílula flutuante** com *scroll spy*: o link da seção visível é destacado
@@ -29,7 +35,7 @@ trajetória, stack e projetos.
 | Marcação | HTML5 semântico |
 | Estilo | CSS3 (Custom Properties, Grid, Flexbox, `color-mix()`) |
 | Comportamento | Vue 3 (build global, sem bundler) |
-| Tipografia | Outfit (Google Fonts) |
+| Tipografia | Geist e Geist Mono (Google Fonts) |
 | Ícones | SVG inline |
 
 ## Rodando localmente
@@ -51,16 +57,39 @@ Depois acesse `http://localhost:5501`.
 ```
 portfolio/
 ├── index.html      # Página única — marcação e template do Vue
+├── cv.html         # Currículo (modal do site e origem dos PDFs)
 ├── css/
-│   └── style.css   # Estilos e temas via CSS Custom Properties
+│   ├── style.css   # Entrada dos módulos de estilo
+│   ├── cv.css      # Folha do currículo (tela e impressão em A4)
+│   └── modules/    # Um arquivo por seção/componente
 ├── js/
-│   ├── data.js     # Conteúdo: experiência, projetos, habilidades e ícones
-│   └── app.js      # App Vue: tema, menu, scroll spy e animações
-└── assets/         # Imagens e mídias
+│   ├── i18n/       # Textos por idioma (pt.js, en.js) — mesmas chaves nos dois
+│   ├── data.js     # Estrutura do conteúdo, datas e durações calculadas
+│   ├── cv.js       # Monta o currículo a partir dos dados
+│   ├── app.js      # App Vue: idioma, tema, menu, scroll spy e modal do CV
+│   └── modules/    # Tema, idioma, reveal, scroll spy, timeline e spotlight
+├── scripts/
+│   └── build-cv-pdf.ps1   # Gera os PDFs do currículo
+└── assets/
+    └── cv/         # PDFs gerados (PT e EN)
 ```
 
-Para atualizar o conteúdo do site (adicionar um projeto, uma tecnologia ou um novo
-cargo), basta editar `js/data.js`.
+Para atualizar o conteúdo do site (um projeto, uma tecnologia ou um novo cargo):
+
+- estrutura, cores, links e nomes de tecnologias ficam em `js/data.js`;
+- qualquer texto exibido fica em `js/i18n/pt.js` **e** `js/i18n/en.js`.
+
+As durações da experiência (e o "1+ ano" do hero) são calculadas a partir das datas
+`AAAA-MM` em `js/data.js`, então não precisam de atualização manual.
+
+## Currículo em PDF
+
+O visualizador e os PDFs vêm de `cv.html`. Depois de alterar dados ou textos, regenere
+os arquivos em `assets/cv/` (requer Edge ou Chrome instalado):
+
+```bash
+powershell -File scripts/build-cv-pdf.ps1
+```
 
 ## Contato
 

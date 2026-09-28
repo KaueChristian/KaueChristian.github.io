@@ -11,6 +11,7 @@
   transition: transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease), background var(--dur-2) var(--ease), color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
   border: 1px solid transparent;
   cursor: pointer;
+  font-family: inherit;
 }
 
 .btn--primary {
@@ -27,6 +28,7 @@
 }
 
 .btn--outline {
+  background: transparent;
   border-color: rgba(255, 255, 255, 0.22);
   color: var(--text-light);
 }

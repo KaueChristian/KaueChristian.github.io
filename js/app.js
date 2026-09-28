@@ -5,7 +5,7 @@
   if (!window.Vue || !data) return;
 
   const { createApp } = window.Vue;
-  const { PortfolioTheme, PortfolioTimeline, PortfolioReveal, PortfolioScrollSpy, PortfolioSpotlight } = window;
+  const { PortfolioTheme, PortfolioTimeline, PortfolioReveal, PortfolioScrollSpy, PortfolioSpotlight, PortfolioI18n } = window;
 
   // Estado não reativo (não precisa passar pelo proxy do Vue a cada evento):
   // frame pendente do scroll e geometria dos cards no início de uma saída do filtro.
@@ -15,16 +15,8 @@
   createApp({
     data() {
       return {
-        age: data.age,
-        navItems: data.navItems,
-        frameworks: data.frameworks,
-        experience: data.experience,
-        projects: data.projects,
-        skillGroups: data.skillGroups,
-        pillars: data.pillars,
-        services: data.services,
-        now: data.now,
-        lockIcon: data.lockIcon,
+        lang: PortfolioI18n ? PortfolioI18n.detectLang() : data.defaultLang,
+        cvOpen: false,
         year: new Date().getFullYear(),
         theme: PortfolioTheme ? PortfolioTheme.getStoredTheme() : 'light',
         scrolled: false,
@@ -40,6 +32,34 @@
     },
 
     computed: {
+      // Todo o conteúdo textual vem de um único objeto, recalculado quando o idioma muda.
+      content() {
+        return data.get(this.lang);
+      },
+      t() { return this.content.t; },
+      navItems() { return this.content.navItems; },
+      frameworks() { return this.content.frameworks; },
+      profileChips() { return this.content.profileChips; },
+      stats() { return this.content.stats; },
+      experience() { return this.content.experience; },
+      projects() { return this.content.projects; },
+      skillGroups() { return this.content.skillGroups; },
+      pillars() { return this.content.pillars; },
+      now() { return this.content.now; },
+      seeking() { return this.content.seeking; },
+      lockIcon() { return this.content.lockIcon; },
+      otherLang() {
+        return this.lang === 'pt' ? 'en' : 'pt';
+      },
+      cvPdfName() {
+        return `Kaue-Christian-CV-${this.lang.toUpperCase()}.pdf`;
+      },
+      cvPdfUrl() {
+        return `assets/cv/${this.cvPdfName}`;
+      },
+      cvFrameUrl() {
+        return `cv.html?lang=${this.lang}&embed=1`;
+      },
       doneProjects() {
         return this.projects.filter((project) => !project.locked);
       },
@@ -49,6 +69,18 @@
     },
 
     watch: {
+      lang: {
+        immediate: true,
+        handler() {
+          if (PortfolioI18n) PortfolioI18n.applyDocumentLang(this.t);
+          // Os textos mudam de largura e altura: recalcula o que depende de medidas.
+          this.$nextTick(() => {
+            this.updateNavIndicator();
+            this.refreshReveal();
+            this.onScroll();
+          });
+        }
+      },
       projectFilter() {
         this.$nextTick(this.refreshReveal);
       },
@@ -58,8 +90,34 @@
     },
 
     methods: {
+      toggleLang() {
+        this.lang = this.otherLang;
+        if (PortfolioI18n) PortfolioI18n.storeLang(this.lang);
+      },
+
+      openCv() {
+        this.cvOpen = true;
+        document.documentElement.classList.add('is-modal-open');
+        this.$refs.cvDialog.showModal();
+      },
+
+      closeCv() {
+        this.$refs.cvDialog.close();
+      },
+
+      // Cobre Esc, botão de fechar e clique no fundo: o <dialog> sempre dispara `close`.
+      onCvClose() {
+        this.cvOpen = false;
+        document.documentElement.classList.remove('is-modal-open');
+      },
+
+      // O clique no ::backdrop chega com o próprio <dialog> como alvo.
+      onCvBackdrop(event) {
+        if (event.target === this.$refs.cvDialog) this.closeCv();
+      },
+
       denyAccess(project) {
-        this.denied = project.title;
+        this.denied = project.id;
         clearTimeout(this.deniedTimer);
         this.deniedTimer = setTimeout(() => { this.denied = null; }, 3200);
       },

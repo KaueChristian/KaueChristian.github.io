@@ -3,8 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kaue Firmo — Desenvolvedor Full Stack</title>
-<meta name="description" content="Portfólio de Kaue Firmo, desenvolvedor full stack em Goiânia. Vue, React, Django e Flask, com Python, Delphi, Java e TypeScript.">
+<title>Kaue Firmo — Full Stack Developer</title>
+<meta name="description" content="Portfolio of Kaue Firmo, full stack developer in Goiânia, Brazil. Vue, React, Python and Go. · Portfólio de Kaue Firmo, desenvolvedor full stack.">
+<link rel="canonical" href="https://kauechristian.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kauechristian.github.io/">
+<meta property="og:title" content="Kaue Firmo — Full Stack Developer">
+<meta property="og:description" content="Vue, React, Python and Go · APIs REST e aplicações em produção. Portfolio / Portfólio.">
+<meta property="og:image" content="https://kauechristian.github.io/assets/profile.jpg">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary">
 <script>
   (function () {
     var stored = localStorage.getItem('theme');
@@ -15,13 +24,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=39">
+<link rel="stylesheet" href="css/style.css?v=40">
 </head>
 <body>
 
 <div class="scroll-progress" aria-hidden="true"></div>
 
-<div id="app">
+<div id="app" v-cloak>
 
   <!-- ===== NAVBAR (pílula flutuante) ===== -->
   <header class="nav" :class="{ 'is-scrolled': scrolled, 'is-open': menuOpen }">
@@ -40,7 +49,8 @@
         >{{ item.label }}</a>
       </nav>
 
-      <button class="nav__theme" @click="toggleTheme" :aria-pressed="String(theme === 'dark')" aria-label="Alternar tema">
+      <button class="nav__lang" type="button" @click="toggleLang" :aria-label="t.ui.switchLang" :lang="otherLang" translate="no">{{ t.ui.langButton }}</button>
+      <button class="nav__theme" @click="toggleTheme" :aria-pressed="String(theme === 'dark')" :aria-label="t.ui.toggleTheme">
         <svg class="nav__theme-icon nav__theme-icon--sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/>
           <path d="M12 2.5v2.6M12 18.9v2.6M4.2 4.2l1.85 1.85M17.95 17.95l1.85 1.85M2.5 12h2.6M18.9 12h2.6M4.2 19.8l1.85-1.85M17.95 6.05l1.85-1.85" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -50,7 +60,7 @@
         </svg>
       </button>
 
-      <button class="nav__burger" @click="menuOpen = !menuOpen" :aria-expanded="String(menuOpen)" aria-label="Abrir menu">
+      <button class="nav__burger" @click="menuOpen = !menuOpen" :aria-expanded="String(menuOpen)" :aria-label="t.ui.openMenu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -68,15 +78,10 @@
 
       <div class="hero__inner">
         <div class="hero__text">
-          <p class="eyebrow">Olá, me chamo</p>
+          <p class="eyebrow">{{ t.hero.eyebrow }}</p>
           <h1 class="hero__name">Kaue<br>Firmo<span class="dot">.</span></h1>
-          <p class="hero__role">Desenvolvedor Full Stack</p>
-          <p class="hero__desc">
-            Transformando ideias em sistemas organizados e escaláveis.
-            Trabalho do banco de dados à interface com <strong>Vue</strong>,
-            <strong>React</strong>, <strong>Django</strong> e <strong>Flask</strong>,
-            além da manutenção e evolução de aplicações já em produção.
-          </p>
+          <p class="hero__role">{{ t.hero.role }}</p>
+          <p class="hero__desc" v-html="t.hero.desc"></p>
 
           <div class="hero__socials">
             <a href="https://github.com/KaueChristian" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub">
@@ -98,42 +103,43 @@
           </div>
 
           <div class="hero__actions">
-            <a href="#projetos" class="btn btn--primary">Ver projetos →</a>
-            <a href="#contato" class="btn btn--outline">Entrar em contato</a>
+            <a href="#projetos" class="btn btn--primary">{{ t.hero.projectsCta }}</a>
+            <button type="button" class="btn btn--outline" @click="openCv">{{ t.hero.cvCta }}</button>
+            <a href="#contato" class="btn btn--outline">{{ t.hero.contactCta }}</a>
           </div>
         </div>
 
         <!-- Painel de identidade -->
         <aside class="idcard">
           <header class="idcard__head">
-            <span class="idcard__head-tag">// perfil</span>
+            <span class="idcard__head-tag">{{ t.idcard.tag }}</span>
             <span class="idcard__head-id">KF · GYN</span>
           </header>
 
-          <p class="idcard__title">Fullstack</p>
-          <p class="idcard__subtitle">Do banco de dados à interface.</p>
+          <p class="idcard__title">{{ t.idcard.title }}</p>
+          <p class="idcard__subtitle">{{ t.idcard.subtitle }}</p>
 
           <dl class="idcard__specs">
             <div class="idcard__spec">
-              <dt>Local</dt>
+              <dt>{{ t.idcard.location }}</dt>
               <dd>Goiânia — GO</dd>
             </div>
             <div class="idcard__spec">
-              <dt>Experiência</dt>
-              <dd>3+ anos</dd>
+              <dt>{{ t.idcard.experience }}</dt>
+              <dd>{{ stats.experience }}</dd>
             </div>
             <div class="idcard__spec">
-              <dt>Projetos</dt>
-              <dd>4+</dd>
+              <dt>{{ t.idcard.projects }}</dt>
+              <dd>{{ stats.projects }}</dd>
             </div>
             <div class="idcard__spec">
-              <dt>Status</dt>
-              <dd class="idcard__status"><span class="idcard__status-dot" aria-hidden="true"></span>Disponível</dd>
+              <dt>{{ t.idcard.status }}</dt>
+              <dd class="idcard__status"><span class="idcard__status-dot" aria-hidden="true"></span>{{ t.idcard.statusValue }}</dd>
             </div>
           </dl>
 
           <footer class="idcard__stack">
-            <span class="idcard__stack-label">Stack</span>
+            <span class="idcard__stack-label">{{ t.idcard.stack }}</span>
             <div class="idcard__frameworks">
               <span
                 v-for="fw in frameworks"
@@ -156,19 +162,11 @@
     <section class="about" id="sobre">
       <div class="section__inner about__inner">
         <div class="about__text reveal">
-          <p class="eyebrow eyebrow--dark">Sobre mim</p>
-          <h2 class="section__title">Quem sou eu</h2>
-          <p class="about__lead">
-            Desenvolvedor full stack em Goiânia, focado em engenharia de software prática:
-            garantindo estabilidade onde sistemas críticos já operam e projetando novas soluções de alta performance.
-          </p>
-          <p class="section__paragraph">
-            No meu dia a dia profissional, atuo intensamente na <strong>manutenção, refatoração e evolução de sistemas legado em Delphi</strong>,
-            lidando com regras de negócio complexas, otimização de consultas SQL e investigação profunda de causas-raiz para manter aplicações de missão crítica estáveis e confiáveis em produção.
-          </p>
-          <p class="section__paragraph">
-            Sou estudante de <strong>Engenharia de Software</strong> e aplico uma visão completa de ponta a ponta: do diagnóstico de problemas e modelagem relacional até a entrega na interface do usuário. No meu tempo livre, canalizo essa experiência em <strong>projetos pessoais com Golang</strong>, desenvolvendo APIs REST de alta concorrência, arquiteturas modernas e serviços escaláveis.
-          </p>
+          <p class="eyebrow eyebrow--dark">{{ t.about.eyebrow }}</p>
+          <h2 class="section__title">{{ t.about.title }}</h2>
+          <p class="about__lead">{{ t.about.lead }}</p>
+          <p class="section__paragraph" v-html="t.about.p1"></p>
+          <p class="section__paragraph" v-html="t.about.p2"></p>
 
         </div>
 
@@ -191,7 +189,7 @@
               </div>
               <span class="about-profile__status">
                 <span class="about-profile__pulse"></span>
-                Disponível
+                {{ t.about.available }}
               </span>
             </div>
 
@@ -211,7 +209,7 @@
               </div>
               <div class="about-code__line">
                 <span class="about-code__num">4</span>
-                <span class="about-code__content">  <span class="code-prop">foco</span>: <span class="code-str">'Sistemas Críticos &amp; APIs'</span>,</span>
+                <span class="about-code__content">  <span class="code-prop">foco</span>: <span class="code-str">'{{ t.about.codeFocus }}'</span>,</span>
               </div>
               <div class="about-code__line">
                 <span class="about-code__num">5</span>
@@ -225,36 +223,16 @@
 
             <!-- Grid de Telemetria Técnica -->
             <div class="about-telemetry">
-              <div class="about-telemetry__item">
-                <span class="about-telemetry__label">// ATUAÇÃO</span>
-                <strong class="about-telemetry__val">Tron Sistemas</strong>
-                <span class="about-telemetry__sub">Desenvolvedor Jr II</span>
-              </div>
-              <div class="about-telemetry__item">
-                <span class="about-telemetry__label">// FORMAÇÃO</span>
-                <strong class="about-telemetry__val">Eng. de Software</strong>
-                <span class="about-telemetry__sub">Unigoiás · 2026</span>
-              </div>
-              <div class="about-telemetry__item">
-                <span class="about-telemetry__label">// METODOLOGIA</span>
-                <strong class="about-telemetry__val">Clean Code</strong>
-                <span class="about-telemetry__sub">SOLID &amp; Resiliência</span>
-              </div>
-              <div class="about-telemetry__item">
-                <span class="about-telemetry__label">// BASE</span>
-                <strong class="about-telemetry__val">Goiânia — GO</strong>
-                <span class="about-telemetry__sub">Remoto / Híbrido</span>
+              <div class="about-telemetry__item" v-for="item in t.about.telemetry" :key="item.label">
+                <span class="about-telemetry__label">{{ item.label }}</span>
+                <strong class="about-telemetry__val">{{ item.value }}</strong>
+                <span class="about-telemetry__sub">{{ item.sub }}</span>
               </div>
             </div>
 
             <!-- Chips de Stacks -->
             <div class="about-profile__footer">
-              <span class="about-profile__chip">Python</span>
-              <span class="about-profile__chip">Delphi</span>
-              <span class="about-profile__chip">Vue.js</span>
-              <span class="about-profile__chip">TypeScript</span>
-              <span class="about-profile__chip">SQL</span>
-              <span class="about-profile__chip">Golang</span>
+              <span class="about-profile__chip" v-for="chip in profileChips" :key="chip">{{ chip }}</span>
             </div>
           </div>
         </div>
@@ -263,9 +241,9 @@
       <!-- Pilares de Engenharia & Desenvolvimento (Timeline Central estilo erickdev) -->
       <div class="section__inner about__block reveal" ref="pillarsTimeline">
         <div class="section__head section__head--center">
-          <p class="eyebrow eyebrow--dark">Princípios &amp; Habilidades</p>
-          <h3 class="section__title">Como Eu Construo Software</h3>
-          <p class="section__paragraph">Padrões de engenharia, arquitetura e boas práticas consolidadas em cada etapa do ciclo de vida da aplicação.</p>
+          <p class="eyebrow eyebrow--dark">{{ t.principles.eyebrow }}</p>
+          <h3 class="section__title">{{ t.principles.title }}</h3>
+          <p class="section__paragraph">{{ t.principles.paragraph }}</p>
         </div>
 
         <div class="center-timeline" ref="centerTimeline" v-cloak>
@@ -322,10 +300,24 @@
       <div class="section__inner about__block reveal">
         <h3 class="about__block-title">
           <span class="about__pulse" aria-hidden="true"></span>
-          Atualmente
+          {{ t.now.title }}
         </h3>
-        <div class="now" v-cloak>
+        <div class="now">
           <div class="now__item glass-panel" v-for="item in now" :key="item.label">
+            <span class="now__label">{{ item.label }}</span>
+            <span class="now__value">{{ item.value }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- O que busco -->
+      <div class="section__inner about__block reveal">
+        <h3 class="about__block-title">
+          <span class="about__pulse" aria-hidden="true"></span>
+          {{ t.seeking.title }}
+        </h3>
+        <div class="now">
+          <div class="now__item glass-panel" v-for="item in seeking" :key="item.label">
             <span class="now__label">{{ item.label }}</span>
             <span class="now__value">{{ item.value }}</span>
           </div>
@@ -337,12 +329,12 @@
     <section class="experience" id="experiencia">
       <div class="section__inner">
         <div class="section__head reveal">
-          <p class="eyebrow eyebrow--dark">Trajetória</p>
-          <h2 class="section__title">Experiência Profissional</h2>
-          <p class="section__paragraph">Onde venho aplicando e construindo o que sei.</p>
+          <p class="eyebrow eyebrow--dark">{{ t.experience.eyebrow }}</p>
+          <h2 class="section__title">{{ t.experience.title }}</h2>
+          <p class="section__paragraph">{{ t.experience.paragraph }}</p>
         </div>
 
-        <div class="companies" v-cloak>
+        <div class="companies">
           <article class="company reveal" :class="{ 'company--glow': company.glow }" :style="{ '--brand': company.color }" v-for="company in experience" :key="company.name">
             <header class="company__head">
               <span class="company__logo">{{ company.short }}</span>
@@ -350,11 +342,11 @@
                 <h3 class="company__name">{{ company.name }}</h3>
                 <p class="company__meta">{{ company.duration }} · {{ company.location }}</p>
               </div>
-              <span class="company__badge" v-if="company.current">Atual</span>
+              <span class="company__badge" v-if="company.current">{{ t.experience.current }}</span>
             </header>
 
             <ol class="roles">
-              <li class="role" v-for="role in company.roles" :key="role.title">
+              <li class="role" v-for="role in company.roles" :key="role.id">
                 <span class="role__dot" aria-hidden="true"></span>
                 <h4 class="role__title">{{ role.title }}</h4>
                 <p class="role__meta">
@@ -375,26 +367,26 @@
     <section class="projects" id="projetos">
       <div class="section__inner">
         <div class="section__head reveal">
-          <p class="eyebrow eyebrow--dark">Portfólio</p>
-          <h2 class="section__title">Meus Projetos</h2>
-          <p class="section__paragraph">Uma coleção de projetos em que já trabalhei. Os que ainda estão em desenvolvimento aparecem bloqueados.</p>
+          <p class="eyebrow eyebrow--dark">{{ t.projects.eyebrow }}</p>
+          <h2 class="section__title">{{ t.projects.title }}</h2>
+          <p class="section__paragraph">{{ t.projects.paragraph }}</p>
         </div>
 
-        <div class="projects__filters reveal" role="group" aria-label="Filtrar projetos" v-cloak>
+        <div class="projects__filters reveal" role="group" :aria-label="t.projects.filterLabel">
           <button
             type="button"
             class="filter"
             :class="{ 'is-active': projectFilter === 'todos' }"
             :aria-pressed="String(projectFilter === 'todos')"
             @click="projectFilter = 'todos'"
-          >Todos <span class="filter__count">{{ projects.length }}</span></button>
+          >{{ t.projects.all }} <span class="filter__count">{{ projects.length }}</span></button>
           <button
             type="button"
             class="filter"
             :class="{ 'is-active': projectFilter === 'concluidos' }"
             :aria-pressed="String(projectFilter === 'concluidos')"
             @click="projectFilter = 'concluidos'"
-          >Concluídos <span class="filter__count">{{ doneProjects.length }}</span></button>
+          >{{ t.projects.done }} <span class="filter__count">{{ doneProjects.length }}</span></button>
         </div>
 
         <!-- Template in-DOM: o HTML força minúsculas, então <TransitionGroup> precisa ser escrito em kebab-case -->
@@ -402,7 +394,6 @@
           name="project-grid"
           tag="div"
           class="projects__grid"
-          v-cloak
           @before-enter="onProjectBeforeEnter"
           @before-leave="onProjectBeforeLeave"
         >
@@ -411,17 +402,17 @@
             :class="[project.locked ? 'project--locked' : '', { 'project--glow': project.glow }]"
             :style="project.glow ? { '--proj-accent': project.accent, '--proj-accent-2': project.accent2, '--proj-accent-3': project.accent3 } : {}"
             v-for="project in visibleProjects"
-            :key="project.title"
+            :key="project.id"
             @click="project.locked && denyAccess(project)"
           >
-            <div class="project__thumb" :class="[project.thumbClass, { 'is-denied': denied === project.title }]" aria-hidden="true">
+            <div class="project__thumb" :class="[project.thumbClass, { 'is-denied': denied === project.id }]" aria-hidden="true">
               <span class="project__glyph" v-html="project.glyph"></span>
               <span class="project__num">{{ project.num }}</span>
 
               <div class="project__lock" v-if="project.locked">
                 <span class="project__lock-badge">
                   <span class="project__lock-icon" v-html="lockIcon"></span>
-                  <span>Em desenvolvimento</span>
+                  <span>{{ t.projects.lockBadge }}</span>
                 </span>
               </div>
             </div>
@@ -449,21 +440,19 @@
                 @click.stop="denyAccess(project)"
               >
                 <span class="project__lock-icon" v-html="lockIcon"></span>
-                Indisponível
+                {{ t.projects.unavailable }}
               </button>
 
-              <p class="project__denied" v-if="denied === project.title" role="status">
-                Esse projeto ainda está em desenvolvimento — publico assim que ficar pronto.
-              </p>
+              <p class="project__denied" v-if="denied === project.id" role="status">{{ t.projects.denied }}</p>
             </div>
           </article>
 
           <article class="project project--cta reveal" key="github-cta">
             <div class="project__cta-body">
-              <span class="project__cta-eyebrow">E tem mais</span>
-              <h3>Confira meu GitHub</h3>
-              <p>Outros projetos, testes e experimentos ficam por lá.</p>
-              <a href="https://github.com/KaueChristian" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Ver GitHub</a>
+              <span class="project__cta-eyebrow">{{ t.projects.ctaEyebrow }}</span>
+              <h3>{{ t.projects.ctaTitle }}</h3>
+              <p>{{ t.projects.ctaText }}</p>
+              <a href="https://github.com/KaueChristian" target="_blank" rel="noopener noreferrer" class="btn btn--primary">{{ t.projects.ctaButton }}</a>
             </div>
           </article>
         </transition-group>
@@ -474,13 +463,13 @@
     <section class="skills" id="habilidades">
       <div class="section__inner">
         <div class="section__head reveal">
-          <p class="eyebrow eyebrow--dark">Expertise</p>
-          <h2 class="section__title">Minhas Habilidades</h2>
-          <p class="section__paragraph">As tecnologias que uso no dia a dia, por área.</p>
+          <p class="eyebrow eyebrow--dark">{{ t.skills.eyebrow }}</p>
+          <h2 class="section__title">{{ t.skills.title }}</h2>
+          <p class="section__paragraph">{{ t.skills.paragraph }}</p>
         </div>
 
-        <div class="skills__grid" v-cloak>
-          <section class="skillcard reveal" v-for="(group, index) in skillGroups" :key="group.title" :class="group.wide ? 'skillcard--wide' : ''" :style="{ '--group-accent': group.accent, '--group-gradient': group.gradient }">
+        <div class="skills__grid">
+          <section class="skillcard reveal" v-for="(group, index) in skillGroups" :key="group.id" :class="group.wide ? 'skillcard--wide' : ''" :style="{ '--group-accent': group.accent, '--group-gradient': group.gradient }">
             <header class="skillcard__head">
               <span class="skillcard__icon" v-html="group.icon"></span>
               <h3>{{ group.title }}</h3>
@@ -501,8 +490,8 @@
     <section class="education" id="educacao">
       <div class="section__inner">
         <div class="section__head reveal">
-          <p class="eyebrow eyebrow--dark">Formação</p>
-          <h2 class="section__title">Educação &amp; Idiomas</h2>
+          <p class="eyebrow eyebrow--dark">{{ t.education.eyebrow }}</p>
+          <h2 class="section__title">{{ t.education.title }}</h2>
         </div>
 
         <div class="education__grid">
@@ -515,9 +504,9 @@
                 </svg>
               </span>
               <div class="edu-card__body">
-                <h4>Engenharia de Software</h4>
-                <span class="edu-card__place">Unigoiás — Centro Universitário de Goiás</span>
-                <span class="edu-card__meta">Conclusão em 2026</span>
+                <h4>{{ t.education.degree }}</h4>
+                <span class="edu-card__place">{{ t.education.degreePlace }}</span>
+                <span class="edu-card__meta">{{ t.education.degreeMeta }}</span>
               </div>
             </div>
 
@@ -528,21 +517,17 @@
                 </svg>
               </span>
               <div class="edu-card__body">
-                <h4>Ensino Médio Completo</h4>
-                <span class="edu-card__place">Colégio MetaTech</span>
+                <h4>{{ t.education.highSchool }}</h4>
+                <span class="edu-card__place">{{ t.education.highSchoolPlace }}</span>
               </div>
             </div>
           </div>
 
           <div class="reveal">
             <div class="lang-list">
-              <div class="lang-item glass-panel">
-                <span class="lang-item__name">Português</span>
-                <span class="lang-item__level">Nativo</span>
-              </div>
-              <div class="lang-item glass-panel">
-                <span class="lang-item__name">Inglês</span>
-                <span class="lang-item__level">Avançado</span>
+              <div class="lang-item glass-panel" v-for="language in t.education.languages" :key="language.name">
+                <span class="lang-item__name">{{ language.name }}</span>
+                <span class="lang-item__level">{{ language.level }}</span>
               </div>
             </div>
           </div>
@@ -557,14 +542,15 @@
       </svg>
 
       <div class="section__inner contact__inner reveal">
-        <p class="eyebrow">Contato</p>
-        <h2 class="contact__title">Vamos conversar<span class="dot">.</span></h2>
-        <p class="contact__subtitle">
-          Tem um projeto em mente ou quer trocar uma ideia? Me manda uma mensagem,
-          vou adorar conversar.
-        </p>
+        <p class="eyebrow">{{ t.contact.eyebrow }}</p>
+        <h2 class="contact__title">{{ t.contact.title }}<span class="dot">.</span></h2>
+        <p class="contact__subtitle">{{ t.contact.subtitle }}</p>
 
         <div class="contact__links">
+          <button type="button" class="contact__link contact__link--cv" @click="openCv">
+            <span class="contact__link-label">CV</span>
+            <span class="contact__link-value">{{ t.contact.cvCta }}</span>
+          </button>
           <a href="mailto:kauefirmo410@gmail.com" class="contact__link">
             <span class="contact__link-label">Email</span>
             <span class="contact__link-value">kauefirmo410@gmail.com</span>
@@ -581,24 +567,46 @@
       </div>
 
       <footer class="footer">
-        <p>© {{ year }} Kaue Firmo. Todos os direitos reservados.</p>
+        <p>© {{ year }} Kaue Firmo. {{ t.contact.footer }}</p>
       </footer>
     </section>
 
   </main>
 
-  <button class="scroll-top" :class="{ visible: showScrollTop }" @click="scrollToTop" aria-label="Voltar ao topo">↑</button>
+  <button class="scroll-top" :class="{ visible: showScrollTop }" @click="scrollToTop" :aria-label="t.ui.scrollTop">↑</button>
+
+  <!-- Visualizador de currículo: o mesmo documento (cv.html) usado para gerar o PDF -->
+  <dialog class="cv-modal" ref="cvDialog" aria-labelledby="cv-modal-title" @close="onCvClose" @click="onCvBackdrop">
+    <div class="cv-modal__panel">
+      <header class="cv-modal__bar">
+        <h2 class="cv-modal__title" id="cv-modal-title">{{ t.cvModal.title }}</h2>
+        <div class="cv-modal__actions">
+          <a class="cv-modal__btn cv-modal__btn--primary" :href="cvPdfUrl" :download="cvPdfName">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5M5 19.5h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {{ t.cvModal.download }}
+          </a>
+          <button type="button" class="cv-modal__btn cv-modal__close" @click="closeCv" :aria-label="t.cvModal.close" autofocus>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </header>
+      <iframe class="cv-modal__frame" v-if="cvOpen" :src="cvFrameUrl" :title="t.cvModal.frameTitle"></iframe>
+    </div>
+  </dialog>
 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
 <script src="js/data/icons.js?v=1"></script>
-<script src="js/data.js?v=18"></script>
+<script src="js/i18n/pt.js?v=3"></script>
+<script src="js/i18n/en.js?v=3"></script>
+<script src="js/data.js?v=19"></script>
+<script src="js/modules/i18n.js?v=2"></script>
 <script src="js/modules/theme.js?v=1"></script>
 <script src="js/modules/timeline.js?v=2"></script>
 <script src="js/modules/reveal.js?v=1"></script>
 <script src="js/modules/scroll-spy.js?v=1"></script>
 <script src="js/modules/spotlight.js?v=3"></script>
-<script src="js/app.js?v=7"></script>
+<script src="js/app.js?v=8"></script>
 </body>
 </html>

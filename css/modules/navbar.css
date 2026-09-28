@@ -103,6 +103,7 @@
   }
 }
 
+.nav__lang,
 .nav__theme,
 .nav__burger {
   flex: 0 0 auto;
@@ -119,11 +120,20 @@
   transition: background var(--dur-2) ease, border-color var(--dur-2) ease;
 }
 
+.nav__lang {
+  margin-left: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
 .nav__theme {
   position: relative;
   overflow: hidden;
   margin-left: 4px;
 }
+.nav__lang:hover,
 .nav__theme:hover,
 .nav__burger:hover {
   background: color-mix(in srgb, currentColor 15%, transparent);
@@ -195,6 +205,9 @@
   }
   .nav__burger {
     display: flex;
+  }
+  .nav__lang {
+    margin-left: auto;
   }
   .nav__links {
     display: none;

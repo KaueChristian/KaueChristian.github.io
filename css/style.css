@@ -5,12 +5,13 @@
 @import './modules/variables.css?v=2';
 @import './modules/base.css?v=2';
 @import './modules/animations.css?v=3';
-@import './modules/components.css?v=2';
-@import './modules/navbar.css?v=2';
+@import './modules/components.css?v=4';
+@import './modules/navbar.css?v=4';
 @import './modules/hero.css?v=2';
 @import './modules/about.css?v=3';
 @import './modules/experience.css?v=2';
 @import './modules/projects.css?v=3';
 @import './modules/skills.css?v=3';
 @import './modules/education.css?v=2';
-@import './modules/contact.css?v=2';
+@import './modules/contact.css?v=5';
+@import './modules/cv-modal.css?v=1';

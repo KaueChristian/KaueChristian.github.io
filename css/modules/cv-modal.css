@@ -1,0 +1,136 @@
+/* Visualizador de currículo (janela flutuante sobre a página) */
+html.is-modal-open {
+  overflow: hidden;
+}
+
+.cv-modal {
+  width: min(940px, calc(100vw - 32px));
+  height: min(92vh, 1240px);
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-dark);
+  overflow: visible;
+}
+
+.cv-modal::backdrop {
+  background: rgba(8, 6, 16, 0.64);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.cv-modal[open] {
+  animation: cv-modal-in 0.32s var(--ease) both;
+}
+.cv-modal[open]::backdrop {
+  animation: cv-modal-fade 0.28s ease both;
+}
+
+@keyframes cv-modal-in {
+  from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes cv-modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.cv-modal__panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.75);
+}
+
+.cv-modal__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px 12px 22px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.cv-modal__title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.cv-modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cv-modal__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform var(--dur-2) var(--ease), background var(--dur-2) ease, border-color var(--dur-2) ease, box-shadow var(--dur-2) var(--ease);
+}
+.cv-modal__btn svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+}
+.cv-modal__btn:hover {
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  transform: translateY(-1px);
+}
+
+.cv-modal__btn--primary {
+  border-color: transparent;
+  background: var(--grad-action);
+  color: #fff;
+  box-shadow: var(--shadow-glow);
+}
+.cv-modal__btn--primary:hover {
+  background: var(--grad-action);
+  box-shadow: 0 16px 32px -14px color-mix(in srgb, var(--accent) 62%, transparent);
+}
+
+.cv-modal__close {
+  width: 38px;
+  padding: 0;
+}
+
+.cv-modal__frame {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  border: 0;
+  background: #e9e7ef;
+}
+
+@media (max-width: 640px) {
+  .cv-modal {
+    width: 100vw;
+    height: 100dvh;
+  }
+  .cv-modal__panel {
+    border-radius: 0;
+    border: 0;
+  }
+  .cv-modal__bar {
+    padding-left: 16px;
+  }
+}
