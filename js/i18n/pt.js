@@ -236,7 +236,7 @@
       highSchoolPlace: 'Colégio MetaTech',
       languages: [
         { name: 'Português', level: 'Nativo' },
-        { name: 'Inglês', level: 'Avançado' }
+        { name: 'Inglês', level: 'Intermediário' }
       ]
     },
 
